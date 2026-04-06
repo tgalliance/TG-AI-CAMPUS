@@ -62,43 +62,6 @@
             margin-right: auto;
         }
         
-        .search-input {
-            flex: 1;
-            padding: 15px 20px;
-            border: 2px solid #e5e7eb;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-        
-        .search-input:focus {
-            outline: none;
-            border-color: #10b981;
-        }
-        
-        .search-btn {
-            padding: 15px 20px;
-            background: #10b981;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-width: 50px;
-        }
-        
-        .search-btn:hover {
-            background: #059669;
-        }
-        
-        .search-btn i {
-            font-size: 1.1rem;
-        }
-        
         .quick-links {
             display: flex;
             gap: 15px;
@@ -498,25 +461,39 @@
                         
                         <ul class="nav-menu">
                             <li><a href="about.html">TG AI 캠퍼스소개</a></li>
-                            <li><a href="manuals.html">AI 활용 메뉴얼</a></li>
-                            <li><a href="dictionary.html">AI 용어 사전</a></li>
-                            <li><a href="courses.html">AI 활용 추천영상</a></li>
-                            <li><a href="news.html">TG 소식</a></li>
+                            <li><a href="manuals.html">AI 활용메뉴얼</a></li>
+                            <li><a href="dictionary.html">AI 용어사전</a></li>
+                            <li><a href="recommended.html">AI 활용추천영상</a></li>
+                            <li><a href="courses.html">교육 과정</a></li>
+                            <li><a href="news.html">TG 라운지</a></li>
                             <li><a href="dashboard.html">학습 현황</a></li>
                         </ul>
                     </div>
                     
-                    <!-- Right Side: User Actions -->
+                    <!-- Right Side: Search + Icons -->
                     <div class="nav-right">
+                        <!-- Search -->
+                        <div class="search-wrapper">
+                            <form class="search-form">
+                                <button type="submit" class="search-btn">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                                <input type="text" class="search-input" placeholder="검색" autocomplete="off">
+                            </form>
+                        </div>
+                        
+                        <!-- Icon Actions -->
                         <div class="icon-actions">
-                            <a href="mypage.html" class="icon-link">
-                                <img src="images/mypage-icon-new.png?v=2" alt="마이페이지" style="height: 20px;">
+                            <a href="mypage.html" class="icon-link" title="마이페이지">
+                                <img src="images/mypage-icon-new.png?v=2" alt="마이페이지" class="icon-img mypage-icon" style="width: auto !important; height: 20px !important; max-height: 20px !important;">
                             </a>
-                            <a href="login.html" class="icon-link">
-                                <img src="images/logout-icon.png" alt="로그인" style="height: 24px;">
+                            <a href="login.html" class="icon-link" id="authIcon" title="로그인">
+                                <img src="images/logout-icon.png" alt="로그인" class="icon-img" style="width: 24px !important; height: 24px !important; max-width: 24px !important; max-height: 24px !important;">
                             </a>
                         </div>
-                        <button class="mobile-menu-toggle">
+                        
+                        <!-- Mobile Toggle -->
+                        <button class="mobile-menu-toggle" id="mobileMenuToggle">
                             <i class="fas fa-bars"></i>
                         </button>
                     </div>
@@ -1084,18 +1061,13 @@
             gap: 10px;
         }
         
-        .search-input {
-            flex: 1;
-            padding: 14px 20px;
-            border: 2px solid #e5e7eb;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-        
-        .search-input:focus {
-            outline: none;
-            border-color: #10b981;
+        @media (max-width: 768px) {
+            .search-input-wrapper {
+                display: flex;
+                gap: 10px;
+                margin-bottom: 30px;
+                flex-wrap: wrap;
+            }
         }
         
         .search-button {
@@ -1376,7 +1348,8 @@
                             <li><a href="about.html">TG AI 캠퍼스소개</a></li>
                             <li><a href="manuals.html">AI 활용메뉴얼</a></li>
                             <li><a href="dictionary.html">AI 용어사전</a></li>
-                            <li><a href="courses.html">AI 활용추천영상</a></li>
+                            <li><a href="recommended.html">AI 활용추천영상</a></li>
+                            <li><a href="courses.html">교육 과정</a></li>
                             <li><a href="news.html" style="color: #3b82f6; font-weight: 600;">TG 소식</a></li>
                             <li><a href="dashboard.html">학습 현황</a></li>
                         </ul>

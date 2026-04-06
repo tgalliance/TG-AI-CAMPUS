@@ -175,8 +175,8 @@ body {
 }
 
 .hero-with-image {
-    padding: 80px 0;
-    min-height: 300px;
+    padding: 27px 0;
+    min-height: 100px;
     display: flex;
     align-items: center;
 }

@@ -327,21 +327,41 @@
                         </a>
                         
                         <ul class="nav-menu">
-                            <li><a href="about.html" class="active">TG AI 캠퍼스 소개</a></li>
-                            <li><a href="manuals.html">AI 활용 메뉴얼</a></li>
-                            <li><a href="dictionary.html">AI 용어 사전</a></li>
-                            <li><a href="courses.html">AI 활용 추천영상</a></li>
-                            <li><a href="news.html" style="color: #3b82f6; font-weight: 600;">TG 소식</a></li>
+                            <li><a href="about.html" class="active">TG AI 캠퍼스소개</a></li>
+                            <li><a href="manuals.html">AI 활용메뉴얼</a></li>
+                            <li><a href="dictionary.html">AI 용어사전</a></li>
+                            <li><a href="recommended.html">AI 활용추천영상</a></li>
+                            <li><a href="courses.html">교육 과정</a></li>
+                            <li><a href="news.html">TG 라운지</a></li>
                             <li><a href="dashboard.html">학습 현황</a></li>
                         </ul>
                     </div>
                     
                     <div class="nav-right">
-                        <div class="icon-actions">
-                            <a href="mypage.html" class="icon-link"><img src="images/mypage-icon.png" alt="마이페이지" style="height: 20px;"></a>
-                            <a href="login.html" class="icon-link"><img src="images/logout-icon.png" alt="로그인" style="height: 24px;"></a>
+                        <!-- Search -->
+                        <div class="search-wrapper">
+                            <form class="search-form">
+                                <button type="submit" class="search-btn">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                                <input type="text" class="search-input" placeholder="검색" autocomplete="off">
+                            </form>
                         </div>
-                        <button class="mobile-menu-toggle"><i class="fas fa-bars"></i></button>
+                        
+                        <!-- Icon Actions -->
+                        <div class="icon-actions">
+                            <a href="mypage.html" class="icon-link" title="마이페이지">
+                                <img src="images/mypage-icon-new.png?v=2" alt="마이페이지" class="icon-img mypage-icon" style="width: auto !important; height: 20px !important; max-height: 20px !important;">
+                            </a>
+                            <a href="login.html" class="icon-link" id="authIcon" title="로그인">
+                                <img src="images/logout-icon.png" alt="로그인" class="icon-img" style="width: 24px !important; height: 24px !important; max-width: 24px !important; max-height: 24px !important;">
+                            </a>
+                        </div>
+                        
+                        <!-- Mobile Toggle -->
+                        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                            <i class="fas fa-bars"></i>
+                        </button>
                     </div>
                 </div>
             </div>
