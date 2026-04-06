@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>영상 재생 데모 - TG에듀테크</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #0f0f0f;
+            font-family: 'Malgun Gothic', sans-serif;
+            color: white;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .video-section {
+            background: #1a1a1a;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 */
+            background: #000;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .video-info {
+            padding: 25px;
+        }
+        
+        .video-title {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+        
+        .video-meta {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            color: #aaa;
+        }
+        
+        .video-meta span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .video-description {
+            line-height: 1.6;
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: white;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-youtube {
+            background: #ff0000;
+        }
+        
+        .btn-youtube:hover {
+            background: #cc0000;
+            transform: translateY(-2px);
+        }
+        
+        .video-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .video-card {
+            background: #1a1a1a;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .video-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .video-thumbnail {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background: #000;
+        }
+        
+        .video-card-info {
+            padding: 15px;
+        }
+        
+        .video-card-title {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        
+        .video-card-meta {
+            font-size: 0.85rem;
+            color: #888;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .video-title {
+                font-size: 1.4rem;
+            }
+            
+            .button-group {
+                flex-direction: column;
+            }
+            
+            .btn {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1><i class="fas fa-play-circle"></i> TG에듀테크 영상 재생 데모</h1>
+            <p>AI 교육 강의를 지금 바로 시청하세요</p>
+        </div>
+        
+        <!-- Main Video Player -->
+        <div class="video-section">
+            <div class="video-container">
+                <iframe 
+                    id="mainPlayer"
+                    src="https://www.youtube.com/embed/aircAruvnKk?autoplay=0&rel=0&modestbranding=1"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <div class="video-info">
+                <h2 class="video-title" id="videoTitle">1강. 신경망이란 무엇인가?</h2>
+                <div class="video-meta">
+                    <span><i class="fas fa-book"></i> AI 기초 과정</span>
+                    <span><i class="fas fa-user"></i> 3Blue1Brown</span>
+                    <span><i class="fas fa-clock"></i> 19:13</span>
+                    <span><i class="fas fa-signal"></i> 입문</span>
+                </div>
+                <p class="video-description" id="videoDescription">
+                    인공신경망의 기본 개념과 작동 원리를 시각적으로 이해합니다. 
+                    3Blue1Brown의 명강의로 AI의 핵심을 배워보세요.
+                </p>
+                <div class="button-group">
+                    <a href="recommended.html" class="btn btn-primary">
+                        <i class="fas fa-arrow-left"></i> 추천강의 목록
+                    </a>
+                    <button class="btn btn-youtube" onclick="openCurrentInYouTube()">
+                        <i class="fab fa-youtube"></i> YouTube에서 보기
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Video List -->
+        <h2 style="margin-bottom: 20px; font-size: 1.5rem;">다른 강의 보기</h2>
+        <div class="video-list">
+            <div class="video-card" onclick="playVideo('https://www.youtube.com/embed/aircAruvnKk', '1강. 신경망이란 무엇인가?', '인공신경망의 기본 개념과 작동 원리를 시각적으로 이해합니다.', '19:13')">
+                <img src="https://img.youtube.com/vi/aircAruvnKk/maxresdefault.jpg" alt="신경망 기초" class="video-thumbnail">
+                <div class="video-card-info">
+                    <h3 class="video-card-title">1강. 신경망이란 무엇인가?</h3>
+                    <div class="video-card-meta">
+                        <i class="fas fa-clock"></i> 19:13 | <i class="fas fa-user"></i> 3Blue1Brown
+                    </div>
+                </div>
+            </div>
+            
+            <div class="video-card" onclick="playVideo('https://www.youtube.com/embed/ukzFI9rgwfU', '2강. 머신러닝 기초 - 10분 완성', '머신러닝의 기본 개념을 10분 안에 이해합니다. 초보자도 쉽게 따라할 수 있는 입문 강의입니다.', '10:18')">
+                <img src="https://img.youtube.com/vi/ukzFI9rgwfU/maxresdefault.jpg" alt="머신러닝 기초" class="video-thumbnail">
+                <div class="video-card-info">
+                    <h3 class="video-card-title">2강. 머신러닝 기초 - 10분 완성</h3>
+                    <div class="video-card-meta">
+                        <i class="fas fa-clock"></i> 10:18 | <i class="fas fa-user"></i> Google
+                    </div>
+                </div>
+            </div>
+            
+            <div class="video-card" onclick="playVideo('https://www.youtube.com/embed/kqtD5dpn9C8', '3강. Python 프로그래밍 입문', 'Python 프로그래밍의 기초를 배웁니다. 변수, 함수, 조건문 등 필수 개념을 다룹니다.', '1:51:50')">
+                <img src="https://img.youtube.com/vi/kqtD5dpn9C8/maxresdefault.jpg" alt="Python 입문" class="video-thumbnail">
+                <div class="video-card-info">
+                    <h3 class="video-card-title">3강. Python 프로그래밍 입문</h3>
+                    <div class="video-card-meta">
+                        <i class="fas fa-clock"></i> 1:51:50 | <i class="fas fa-user"></i> freeCodeCamp
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentVideoUrl = 'https://www.youtube.com/embed/aircAruvnKk';
+
+        function playVideo(url, title, description, duration) {
+            currentVideoUrl = url;
+            document.getElementById('mainPlayer').src = url + '?autoplay=1&rel=0&modestbranding=1';
+            document.getElementById('videoTitle').textContent = title;
+            document.getElementById('videoDescription').textContent = description;
+            
+            // 페이지 상단으로 스크롤
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function openCurrentInYouTube() {
+            const videoId = currentVideoUrl.split('/embed/')[1].split('?')[0];
+            const watchUrl = `https://www.youtube.com/watch?v=${videoId}`;
+            window.open(watchUrl, '_blank');
+        }
+    </script>
+</body>
+</html>

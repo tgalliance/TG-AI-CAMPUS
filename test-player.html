@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>테스트 - 영상 재생</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #000;
+            color: white;
+            font-family: sans-serif;
+        }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            background: #000;
+            margin-bottom: 20px;
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .info {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+        pre {
+            background: #2a2a2a;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎬 영상 재생 테스트</h1>
+        
+        <div class="info">
+            <h3>디버깅 정보:</h3>
+            <pre id="debug">로딩 중...</pre>
+        </div>
+        
+        <div id="videoArea">
+            <p style="color: #666;">영상을 불러오는 중...</p>
+        </div>
+        
+        <a href="recommended.html" class="button">← 추천강의로 돌아가기</a>
+    </div>
+
+    <script>
+        const debug = document.getElementById('debug');
+        const videoArea = document.getElementById('videoArea');
+        
+        // 디버그 로그
+        function log(msg) {
+            console.log(msg);
+            debug.textContent += msg + '\n';
+        }
+        
+        // URL 파라미터
+        const urlParams = new URLSearchParams(window.location.search);
+        const videoId = urlParams.get('id');
+        
+        log('1️⃣ URL 파라미터 확인');
+        log('   videoId = ' + videoId);
+        log('');
+        
+        if (!videoId) {
+            log('❌ videoId가 없습니다!');
+            log('   URL 형식: test-player.html?id=영상ID');
+            videoArea.innerHTML = '<p style="color: red;">오류: 영상 ID가 없습니다</p>';
+        } else {
+            loadVideo(videoId);
+        }
+        
+        async function loadVideo(id) {
+            try {
+                log('2️⃣ DB에서 영상 조회 시도');
+                log('   URL: tables/videos/' + id);
+                log('');
+                
+                const response = await fetch('tables/videos/' + id);
+                
+                log('3️⃣ 응답 상태: ' + response.status);
+                
+                if (!response.ok) {
+                    throw new Error('HTTP ' + response.status);
+                }
+                
+                const video = await response.json();
+                
+                log('4️⃣ 영상 정보:');
+                log('   제목: ' + video.title);
+                log('   URL: ' + video.video_url);
+                log('   강의 ID: ' + video.course_id);
+                log('');
+                
+                // YouTube URL 처리
+                let embedUrl = video.video_url;
+                
+                // watch?v= → embed 변환
+                if (embedUrl.includes('watch?v=')) {
+                    const videoCode = embedUrl.split('watch?v=')[1].split('&')[0];
+                    embedUrl = 'https://www.youtube.com/embed/' + videoCode;
+                    log('5️⃣ URL 변환됨: ' + embedUrl);
+                }
+                
+                // & → ? 수정
+                embedUrl = embedUrl.replace(/embed\/([^&?]+)&/, 'embed/$1?');
+                
+                log('6️⃣ 최종 URL: ' + embedUrl);
+                log('');
+                log('✅ 플레이어 생성 중...');
+                
+                // 플레이어 생성
+                videoArea.innerHTML = `
+                    <div class="video-wrapper">
+                        <iframe
+                            src="${embedUrl}?autoplay=1"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="info">
+                        <h2>${video.title}</h2>
+                        <p>강의: ${video.course_id || '정보 없음'}</p>
+                        <p>시간: ${video.duration || '정보 없음'}</p>
+                    </div>
+                `;
+                
+                log('✅ 완료!');
+                
+            } catch (error) {
+                log('');
+                log('❌ 오류 발생: ' + error.message);
+                videoArea.innerHTML = '<p style="color: red;">오류: ' + error.message + '</p>';
+            }
+        }
+    </script>
+</body>
+</html>

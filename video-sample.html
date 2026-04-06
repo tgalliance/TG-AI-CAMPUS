@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 직무별 프롬프트 활용법 - TG에듀테크</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #0f0f0f;
+            font-family: 'Noto Sans KR', sans-serif;
+            color: white;
+        }
+        
+        .video-wrapper {
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+        
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 */
+            background: #000;
+        }
+        
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+        }
+        
+        .video-info {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+        
+        .video-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .video-meta {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            color: #aaa;
+            font-size: 0.95rem;
+        }
+        
+        .video-meta span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .video-description {
+            line-height: 1.8;
+            color: #ccc;
+            margin-bottom: 30px;
+            font-size: 1.05rem;
+        }
+        
+        .video-sections {
+            background: #1a1a1a;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .video-sections h3 {
+            margin-bottom: 15px;
+            color: #667eea;
+            font-size: 1.3rem;
+        }
+        
+        .video-sections ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .video-sections li {
+            padding: 10px 0;
+            border-bottom: 1px solid #333;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .video-sections li:hover {
+            color: #667eea;
+        }
+        
+        .video-sections li:last-child {
+            border-bottom: none;
+        }
+        
+        .back-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.3s;
+        }
+        
+        .back-button:hover {
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .video-title {
+                font-size: 1.5rem;
+            }
+            
+            .video-info {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="video-wrapper">
+        <div class="video-container">
+            <video id="mainVideo" controls playsinline webkit-playsinline autoplay>
+                <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+                브라우저가 비디오 재생을 지원하지 않습니다.
+            </video>
+        </div>
+        
+        <div class="video-info">
+            <h1 class="video-title">AI 직무별 프롬프트 활용법</h1>
+            
+            <div class="video-meta">
+                <span><i class="fas fa-book"></i> AI 실무 활용 과정</span>
+                <span><i class="fas fa-user"></i> TG에듀테크</span>
+                <span><i class="fas fa-clock"></i> 45:30</span>
+                <span><i class="fas fa-signal"></i> 중급</span>
+            </div>
+            
+            <div class="video-description">
+                <p>
+                    직무별로 AI를 효과적으로 활용하는 프롬프트 작성법을 배웁니다.
+                    마케팅, 개발, 디자인, 기획, 인사 등 다양한 직무에서 실제로 사용할 수 있는
+                    실전 프롬프트 예시와 함께 업무 효율을 높이는 방법을 학습합니다.
+                </p>
+            </div>
+            
+            <div class="video-sections">
+                <h3><i class="fas fa-list"></i> 강의 목차</h3>
+                <ul>
+                    <li onclick="seekTo(0)"><i class="fas fa-play-circle"></i> 0:00 - 인트로: AI 프롬프트의 중요성</li>
+                    <li onclick="seekTo(180)"><i class="fas fa-play-circle"></i> 3:00 - 마케팅 직무: 콘텐츠 기획 및 카피라이팅</li>
+                    <li onclick="seekTo(540)"><i class="fas fa-play-circle"></i> 9:00 - 개발 직무: 코드 리뷰 및 디버깅</li>
+                    <li onclick="seekTo(900)"><i class="fas fa-play-circle"></i> 15:00 - 디자인 직무: 디자인 컨셉 및 피드백</li>
+                    <li onclick="seekTo(1260)"><i class="fas fa-play-circle"></i> 21:00 - 기획 직무: 프로젝트 관리 및 문서화</li>
+                    <li onclick="seekTo(1620)"><i class="fas fa-play-circle"></i> 27:00 - 인사 직무: 채용 및 평가</li>
+                    <li onclick="seekTo(1980)"><i class="fas fa-play-circle"></i> 33:00 - 실전 프롬프트 작성 팁</li>
+                    <li onclick="seekTo(2430)"><i class="fas fa-play-circle"></i> 40:30 - Q&A 및 마무리</li>
+                </ul>
+            </div>
+            
+            <div class="video-sections">
+                <h3><i class="fas fa-lightbulb"></i> 학습 포인트</h3>
+                <ul style="padding-left: 20px; list-style: disc;">
+                    <li>효과적인 프롬프트 구조 이해하기</li>
+                    <li>직무별 맞춤 프롬프트 템플릿</li>
+                    <li>AI 응답 품질을 높이는 기법</li>
+                    <li>실무 적용 사례 및 베스트 프랙티스</li>
+                    <li>프롬프트 최적화 전략</li>
+                </ul>
+            </div>
+            
+            <button class="back-button" onclick="goBack()">
+                <i class="fas fa-arrow-left"></i> 추천강의로 돌아가기
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const video = document.getElementById('mainVideo');
+        
+        function seekTo(seconds) {
+            video.currentTime = seconds;
+            video.play();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        function goBack() {
+            window.location.href = 'recommended.html';
+        }
+        
+        // 비디오 로드 확인
+        video.addEventListener('loadedmetadata', function() {
+            console.log('✅ 비디오 로드 성공');
+        });
+        
+        video.addEventListener('error', function() {
+            console.error('❌ 비디오 로드 실패');
+        });
+    </script>
+</body>
+</html>

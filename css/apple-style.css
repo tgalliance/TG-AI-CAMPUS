@@ -1,0 +1,283 @@
+/* ==================== Apple-Style Cards ==================== */
+
+.features.apple-style {
+    padding: 80px 0;
+    background: #f5f5f7;
+}
+
+.apple-cards-container {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 40px 2rem;
+}
+
+.apple-cards-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.apple-cards-row:last-child {
+    margin-bottom: 0;
+}
+
+/* Card Styles */
+.apple-card {
+    background: #f5f5f7;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Background Images for Each Card - Clear and Vibrant */
+.apple-card:nth-child(1) {
+    background-image: url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1400&h=900&fit=crop&q=90');
+}
+
+.apple-card:nth-child(2) {
+    background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1400&h=900&fit=crop&q=90');
+}
+
+.apple-cards-row:nth-child(2) .apple-card:nth-child(1) {
+    background-image: url('https://images.unsplash.com/photo-1551434678-e076c223a692?w=900&h=900&fit=crop&q=90');
+}
+
+.apple-cards-row:nth-child(2) .apple-card:nth-child(2) {
+    background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=900&h=900&fit=crop&q=90');
+}
+
+.apple-cards-row:nth-child(2) .apple-card:nth-child(3) {
+    background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=900&h=900&fit=crop&q=90');
+}
+
+.apple-cards-row:nth-child(3) .apple-card {
+    background-image: url('https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1400&h=700&fit=crop&q=90');
+}
+
+.apple-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Card Sizes */
+.apple-card-large {
+    flex: 1;
+    min-height: 480px;
+}
+
+.apple-card-medium {
+    flex: 1;
+    min-height: 420px;
+}
+
+.apple-card-full {
+    width: 100%;
+    min-height: 380px;
+}
+
+/* Card Content - Apple Style with Image on Top */
+.apple-card-content {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+    position: relative;
+    z-index: 3;
+    background: linear-gradient(to top, white 40%, transparent 40%);
+}
+
+/* Text Content Area */
+.apple-card-content h3 {
+    padding: 10px 40px 0 40px;
+    margin: 0;
+}
+
+.apple-card-content p {
+    padding: 0 40px;
+    margin: 15px 0;
+}
+
+.apple-card-content .apple-learn-more {
+    padding: 0 40px 35px 40px;
+    margin: 0;
+}
+
+.apple-card .feature-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #0099FF 0%, #0077CC 100%);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.apple-card:hover .feature-icon {
+    transform: scale(1.05);
+}
+
+.apple-card .feature-icon i {
+    font-size: 28px;
+    color: white;
+}
+
+.apple-card h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1d1d1f;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.apple-card p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #6e6e73;
+    margin: 0;
+}
+
+/* Learn More Link */
+.apple-learn-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #0099FF;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.apple-learn-more:hover {
+    gap: 12px;
+    color: #0077CC;
+}
+
+.apple-learn-more i {
+    font-size: 0.875rem;
+    transition: transform 0.3s ease;
+}
+
+.apple-learn-more:hover i {
+    transform: translateX(4px);
+}
+
+/* Background Patterns - Removed */
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .apple-cards-row {
+        flex-direction: column;
+    }
+    
+    .apple-card-large,
+    .apple-card-medium {
+        min-height: 380px;
+    }
+    
+    .apple-card-content {
+        padding: 40px 30px;
+    }
+    
+    .apple-card h3 {
+        font-size: 1.75rem;
+    }
+    
+    .apple-card p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .features.apple-style {
+        padding: 60px 0;
+    }
+    
+    .apple-cards-container {
+        padding: 20px 15px;
+    }
+    
+    .apple-card-large,
+    .apple-card-medium,
+    .apple-card-full {
+        min-height: 320px;
+    }
+    
+    .apple-card-content {
+        padding: 30px 25px;
+    }
+    
+    .apple-card .feature-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 20px;
+    }
+    
+    .apple-card .feature-icon i {
+        font-size: 28px;
+    }
+    
+    .apple-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+    
+    .apple-card p {
+        font-size: 0.95rem;
+        margin-bottom: 20px;
+    }
+}
+
+/* Scroll Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.apple-card {
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0;
+}
+
+.apple-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.apple-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.apple-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.apple-cards-row:nth-child(2) .apple-card:nth-child(1) {
+    animation-delay: 0.4s;
+}
+
+.apple-cards-row:nth-child(2) .apple-card:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.apple-cards-row:nth-child(2) .apple-card:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+.apple-cards-row:nth-child(3) .apple-card {
+    animation-delay: 0.7s;
+}

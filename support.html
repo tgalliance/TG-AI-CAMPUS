@@ -1,0 +1,1650 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>학습 도우미 - TG AI 캠퍼스</title>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/enhanced-styles.css">
+    <link rel="stylesheet" href="css/samsung-nav.css?v=3">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* 학습 도우미 페이지 스타일 */
+        .support-hero {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            padding: 80px 0 60px;
+            color: white;
+            text-align: center;
+        }
+        
+        .support-hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .support-hero p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+        
+        .support-container {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+        
+        .search-box {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+        
+        .search-box h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #1f2937;
+        }
+        
+        .search-input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .search-input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: #10b981;
+        }
+        
+        .search-btn {
+            padding: 15px 20px;
+            background: #10b981;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 50px;
+        }
+        
+        .search-btn:hover {
+            background: #059669;
+        }
+        
+        .search-btn i {
+            font-size: 1.1rem;
+        }
+        
+        .quick-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .quick-link {
+            padding: 8px 16px;
+            background: #f0fdf4;
+            color: #10b981;
+            border: 1px solid #10b981;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .quick-link:hover {
+            background: #10b981;
+            color: white;
+        }
+        
+        .support-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .support-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .support-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .support-card-header {
+            padding: 25px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .support-card-header.ai-basics {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .support-card-header.prompt {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        
+        .support-card-header.automation {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        
+        .support-card-header.troubleshoot {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+        
+        .support-card-header i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .support-card-header h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 0;
+        }
+        
+        .support-card-body {
+            padding: 25px;
+        }
+        
+        .support-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .support-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #f1f5f9;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .support-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .support-list i {
+            color: #10b981;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        
+        .support-list a {
+            color: #475569;
+            text-decoration: none;
+            font-weight: 500;
+            line-height: 1.4;
+            flex: 1;
+        }
+        
+        .support-list a:hover {
+            color: #10b981;
+        }
+        
+        .faq-section {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+            margin-bottom: 60px;
+        }
+        
+        .faq-header {
+            padding: 30px;
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .faq-header h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin: 0 0 10px 0;
+        }
+        
+        .faq-header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+        
+        .faq-categories {
+            display: flex;
+            gap: 10px;
+            padding: 20px 30px;
+            background: #f8fafc;
+            border-bottom: 1px solid #e2e8f0;
+            flex-wrap: wrap;
+        }
+        
+        .category-tab {
+            padding: 8px 16px;
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #6b7280;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .category-tab:hover {
+            border-color: #f59e0b;
+            color: #f59e0b;
+        }
+        
+        .category-tab.active {
+            background: #f59e0b;
+            border-color: #f59e0b;
+            color: white;
+        }
+        
+        .faq-content {
+            padding: 30px;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .faq-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .faq-question {
+            padding: 20px;
+            background: #f8fafc;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            color: #1f2937;
+        }
+        
+        .faq-question:hover {
+            background: #f1f5f9;
+        }
+        
+        .faq-question.active {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        
+        .faq-icon {
+            width: 24px;
+            height: 24px;
+            background: #f59e0b;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+        
+        .faq-answer {
+            padding: 20px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+            display: none;
+            line-height: 1.6;
+            color: #475569;
+        }
+        
+        .faq-answer.active {
+            display: block;
+        }
+        
+        .contact-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 0;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .contact-section h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .contact-section p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .contact-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .contact-btn {
+            padding: 15px 30px;
+            background: white;
+            color: #667eea;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+        
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+        
+        .resource-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .resource-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 auto 20px;
+        }
+        
+        .resource-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #1f2937;
+        }
+        
+        .resource-card p {
+            color: #64748b;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        
+        .resource-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #10b981;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .resource-btn:hover {
+            background: #059669;
+        }
+        
+        @media (max-width: 768px) {
+            .support-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .support-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .search-input-group {
+                flex-direction: column;
+            }
+            
+            .contact-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header / Navigation -->
+    <header class="header">
+        <!-- Top Utility Bar -->
+        <div class="utility-bar">
+            <div class="container">
+                <div class="utility-wrapper">
+                    <a href="support.html" class="utility-link">학습 도우미</a>
+                    <a href="notices.html" class="utility-link">공지사항</a>
+                    <a href="tg-family.html" class="utility-link">TG패밀리</a>
+                    <a href="https://trigem.career.greetinghr.com/ko/intro" target="_blank" class="external-link tg-alliance">
+                        TG Alliance <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <a href="site2/index.html" class="external-link" style="color: #ff8c00;">
+                        TG 에듀테크 <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Navigation Bar -->
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <!-- Left Side: Logo + Menu -->
+                    <div class="nav-left">
+                        <a href="index.html" class="logo">
+                            <i class="fas fa-brain"></i>
+                            <span><span class="logo-tg">TG</span> AI 캠퍼스</span>
+                        </a>
+                        
+                        <ul class="nav-menu">
+                            <li><a href="about.html">TG AI 캠퍼스소개</a></li>
+                            <li><a href="manuals.html">AI 활용 메뉴얼</a></li>
+                            <li><a href="dictionary.html">AI 용어 사전</a></li>
+                            <li><a href="courses.html">AI 활용 추천영상</a></li>
+                            <li><a href="news.html">TG 소식</a></li>
+                            <li><a href="dashboard.html">학습 현황</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Right Side: User Actions -->
+                    <div class="nav-right">
+                        <div class="icon-actions">
+                            <a href="mypage.html" class="icon-link">
+                                <img src="images/mypage-icon-new.png?v=2" alt="마이페이지" style="height: 20px;">
+                            </a>
+                            <a href="login.html" class="icon-link">
+                                <img src="images/logout-icon.png" alt="로그인" style="height: 24px;">
+                            </a>
+                        </div>
+                        <button class="mobile-menu-toggle">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="support-hero">
+        <div class="container">
+            <h1><i class="fas fa-hands-helping"></i> 학습 도우미</h1>
+            <p>AI 학습 과정에서 궁금한 점이 있다면 언제든지 물어보세요!<br>전문가 상담과 다양한 학습 자료로 여러분의 성공을 도와드립니다.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="support-container">
+        <!-- Search Box -->
+        <div class="search-box">
+            <h2><i class="fas fa-search"></i> 무엇을 도와드릴까요?</h2>
+            <div class="search-input-group">
+                <input type="text" class="search-input" placeholder="궁금한 점을 검색해보세요 (예: 프롬프트 작성법, AI 활용 팁 등)">
+            </div>
+        </div>
+
+        <!-- Support Categories -->
+        <div class="support-grid">
+            <!-- AI 기초 -->
+            <div class="support-card">
+                <div class="support-card-header ai-basics">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>AI 기초</h3>
+                </div>
+                <div class="support-card-body">
+                    <ul class="support-list">
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <a href="#">AI의 정의와 종류 이해하기</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <a href="#">머신러닝 vs 딥러닝 차이점</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <a href="#">생성형 AI 활용 방법</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <a href="#">AI 윤리와 보안 가이드라인</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <a href="#">초보자를 위한 학습 로드맵</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <a href="#">AI 용어 사전 활용법</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 프롬프트 엔지니어링 -->
+            <div class="support-card">
+                <div class="support-card-header prompt">
+                    <i class="fas fa-comment-dots"></i>
+                    <h3>프롬프트 엔지니어링</h3>
+                </div>
+                <div class="support-card-body">
+                    <ul class="support-list">
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <a href="#">효과적인 프롬프트 작성 원칙</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <a href="#">Few-shot 예제 활용법</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <a href="#">Chain of Thought 기법</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <a href="#">직무별 프롬프트 템플릿</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <a href="#">프롬프트 최적화 팁</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <a href="#">일반적인 실수와 해결법</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 업무 자동화 -->
+            <div class="support-card">
+                <div class="support-card-header automation">
+                    <i class="fas fa-robot"></i>
+                    <h3>업무 자동화</h3>
+                </div>
+                <div class="support-card-body">
+                    <ul class="support-list">
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <a href="#">반복 업무 식별 방법</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <a href="#">API 연동 및 확장</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <a href="#">워크플로우 설계 가이드</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <a href="#">보고서 자동화 팁</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <a href="#">이메일 처리 자동화</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <a href="#">데이터 분석 자동화</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 실전 활용 -->
+            <div class="support-card">
+                <div class="support-card-header" style="background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>실전 활용</h3>
+                </div>
+                <div class="support-card-body">
+                    <ul class="support-list">
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <a href="#">보고서 작성 자동화</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <a href="#">회의록 정리 및 요약</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <a href="#">이메일 초안 작성</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <a href="#">마케팅 콘텐츠 생성</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <a href="#">데이터 시각화 팁</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <a href="#">프레젠테이션 제작</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 성공 사례 -->
+            <div class="support-card">
+                <div class="support-card-header" style="background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);">
+                    <i class="fas fa-trophy"></i>
+                    <h3>성공 사례</h3>
+                </div>
+                <div class="support-card-body">
+                    <ul class="support-list">
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <a href="#">영업팀 업무 효율 50% 향상</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <a href="#">인사팀 채용 프로세스 자동화</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <a href="#">마케팅팀 콘텐츠 생산량 3배 증가</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <a href="#">재무팀 보고서 작성 시간 70% 단축</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <a href="#">고객 서비스 응답 속도 개선</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <a href="#">개발팀 코드 리뷰 자동화</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 문제 해결 -->
+            <div class="support-card">
+                <div class="support-card-header troubleshoot">
+                    <i class="fas fa-tools"></i>
+                    <h3>문제 해결</h3>
+                </div>
+                <div class="support-card-body">
+                    <ul class="support-list">
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <a href="#">일반적인 오류와 해결책</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <a href="#">성능 저하 문제 해결</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <a href="#">응답 품질 향상 방법</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <a href="#">비용 효율화 팁</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <a href="#">디버깅 및 테스트 방법</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <a href="#">고급 문제 해결 기법</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="faq-section">
+            <div class="faq-header">
+                <h2><i class="fas fa-question-circle"></i> 자주 묻는 질문</h2>
+                <p>다른 학습자들이 가장 궁금해하는 질문과 답변</p>
+            </div>
+            
+            <div class="faq-categories">
+                <button class="category-tab active" data-category="all">전체</button>
+                <button class="category-tab" data-category="basics">기초</button>
+                <button class="category-tab" data-category="prompt">프롬프트</button>
+                <button class="category-tab" data-category="automation">자동화</button>
+                <button class="category-tab" data-category="practical">실전 활용</button>
+                <button class="category-tab" data-category="success">성공 사례</button>
+                <button class="category-tab" data-category="trouble">문제 해결</button>
+            </div>
+            
+            <div class="faq-content">
+                <div class="faq-item" data-category="basics">
+                    <div class="faq-question">
+                        <div class="faq-icon">Q</div>
+                        <span>AI를 처음 시작하는데 어떤 과정부터 배워야 하나요?</span>
+                    </div>
+                    <div class="faq-answer">
+                        AI를 처음 시작하신다면 기초편부터 학습하시는 것을 추천합니다. 먼저 AI의 기본 개념과 원리를 이해한 후, 실제 활용 방법을 단계적으로 익히시면 됩니다. TG AI 캠퍼스에서는 체계적인 커리큘럼을 제공하므로 순서대로 따라오시면 됩니다.
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="prompt">
+                    <div class="faq-question">
+                        <div class="faq-icon">Q</div>
+                        <span>좋은 프롬프트를 작성하는 비법이 있나요?</span>
+                    </div>
+                    <div class="faq-answer">
+                        좋은 프롬프트 작성의 핵심은 '명확성'과 '구체성'입니다. 1) 원하는 결과를 명확하게 설명하세요. 2) 구체적인 예시나 맥락을 제공하세요. 3) 역할을 부여하여 전문성을 높이세요. 4) 단계별로 지시하여 복잡한 작업을 나누세요. 이러한 원칙을 적용하면 훨씬 좋은 결과를 얻을 수 있습니다.
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="automation">
+                    <div class="faq-question">
+                        <div class="faq-icon">Q</div>
+                        <span>업무 자동화를 시작하려면 어떻게 해야 하나요?</span>
+                    </div>
+                    <div class="faq-answer">
+                        업무 자동화는 다음 단계로 시작하세요: 1) 반복적인 업무를 식별하세요. 2) 자동화 가능성을 평가하세요. 3) 간단한 작업부터 시작하여 점진적으로 확장하세요. 4) 적절한 AI 도구를 선택하세요. 5) 테스트와 개선을 반복하세요. 처음에는 간단한 작업부터 시작하여 경험을 쌓는 것이 중요합니다.
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="trouble">
+                    <div class="faq-question">
+                        <div class="faq-icon">Q</div>
+                        <span>AI가 원하는 대로 응답하지 않을 때 어떻게 해야 하나요?</span>
+                    </div>
+                    <div class="faq-answer">
+                        AI 응답이 만족스럽지 않을 때: 1) 프롬프트를 더 구체적으로 수정하세요. 2) 예시를 추가하여 원하는 결과를 명확히 하세요. 3) 역할을 지정하여 전문성을 높이세요. 4) 단계별로 지시하여 복잡성을 줄이세요. 5) 여러 번 시도하며 최적의 프롬프트를 찾으세요.
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="practical">
+                    <div class="faq-question">
+                        <div class="faq-icon">Q</div>
+                        <span>보고서 작성을 자동화하려면 어떻게 해야 하나요?</span>
+                    </div>
+                    <div class="faq-answer">
+                        보고서 자동화는 다음 단계로 진행하세요: 1) 보고서 템플릿을 만들고 구조를 정의하세요. 2) AI에게 데이터 분석 및 요약을 요청하세요. 3) 시각화 자료 생성을 지시하세요. 4) 결론 및 제안 부분을 작성하도록 하세요. 5) 검토 및 수정 단계를 거쳐 완성도를 높이세요. 정기적으로 사용하는 보고서 형식을 템플릿으로 만들어두면 더 효율적입니다.
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="practical">
+                    <div class="faq-question">
+                        <div class="faq-icon">Q</div>
+                        <span>회의록 작성 시간을 줄이는 팁이 있나요?</span>
+                    </div>
+                    <div class="faq-answer">
+                        회의록 자동화 팁: 1) 음성 녹음 후 AI로 텍스트 변환하세요. 2) 회의 목적과 주요 안건을 미리 알려주세요. 3) 참석자별 발언 내용을 구분해서 요청하세요. 4) 결정사항과 Action Item을 별도로 정리하도록 하세요. 5) 다음 회의 일정과 과제를 자동으로 추출하게 하세요. 이렇게 하면 회의록 작성 시간을 80% 이상 줄일 수 있습니다.
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="success">
+                    <div class="faq-question">
+                        <div class="faq-icon">Q</div>
+                        <span>영업팀에서 AI 도입 후 실제 효과가 있었나요?</span>
+                    </div>
+                    <div class="faq-answer">
+                        네, 영업팀의 AI 도입 성공 사례: 1) 고객 관리 자동화로 관리 고객 수 2배 증가, 2) 제안서 생성 시간 70% 단축, 3) 고객 응답 예측 정확도 85% 달성, 4) 영업 활동 보고서 자동화로 행정 업무 50% 감소, 5) 개인화된 이메일 초안으로 응답률 30% 향상. 이러한 결과로 전체 영업 효율이 50% 이상 향상되었습니다.
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="success">
+                    <div class="faq-question">
+                        <div class="faq-icon">Q</div>
+                        <span>마케팅팀에서 콘텐츠 생산량을 3배 늘린 비법은?</span>
+                    </div>
+                    <div class="faq-answer">
+                        마케팅팀의 성공 비법: 1) 콘텐츠 아이디어 생성을 AI에 위임하여 아이디어 부족 해소, 2) 타겟 고객별 맞춤 콘텐츠 대량 생성, 3) SNS 포스팅 자동화로 일일 10개 이상 포스팅, 4) A/B 테스트용 콘텐츠 다변화 자동 생성, 5) 성과 분석 및 최적화 방향 제안. 이를 통해 콘텐츠 품질은 유지하면서 생산량은 3배 증가했습니다.
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="basics">
+                    <div class="faq-question">
+                        <div class="faq-icon">Q</div>
+                        <span>AI 학습에 얼마나 시간이 걸리나요?</span>
+                    </div>
+                    <div class="faq-answer">
+                        학습 시간은 개인의 목표와 노력에 따라 다릅니다. 기초 개념을 익히는 데는 1-2주, 실전 활용까지는 1-2개월 정도 소요될 수 있습니다. 하지만 AI는 계속 발전하는 분야이므로 꾸준한 학습이 중요합니다. 하루 30분이라도 꾸준히 학습하는 것을 추천합니다.
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="prompt">
+                    <div class="faq-question">
+                        <div class="faq-icon">Q</div>
+                        <span>프롬프트 엔지니어링이란 무엇인가요?</span>
+                    </div>
+                    <div class="faq-answer">
+                        프롬프트 엔지니어링은 AI에게 원하는 결과를 얻기 위해 효과적인 지시(프롬프트)를 설계하고 최적화하는 기술입니다. 단순히 질문하는 것을 넘어, AI의 능력을 최대한 활용하여 정확하고 유용한 응답을 얻는 방법론입니다. 이는 AI 활용의 핵심 역량입니다.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="contact-section">
+            <h2><i class="fas fa-headset"></i> 1:1 전문가 상담</h2>
+            <p>더 궁금한 점이 있으신가요? AI 전문가가 직접 도와드립니다.</p>
+            <div class="contact-buttons">
+                <a href="#" class="contact-btn">
+                    <i class="fas fa-comments"></i>
+                    실시간 채팅 상담
+                </a>
+                <a href="#" class="contact-btn">
+                    <i class="fas fa-calendar"></i>
+                    예약 상담
+                </a>
+                <a href="#" class="contact-btn">
+                    <i class="fas fa-envelope"></i>
+                    이메일 문의
+                </a>
+            </div>
+        </div>
+
+        <!-- Learning Resources -->
+        <div class="resources-grid">
+            <div class="resource-card">
+                <div class="resource-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <h3>학습 가이드</h3>
+                <p>체계적인 학습 로드맵과 단계별 가이드를 제공합니다.</p>
+                <a href="#" class="resource-btn">가이드 보기</a>
+            </div>
+
+            <div class="resource-card">
+                <div class="resource-icon">
+                    <i class="fas fa-video"></i>
+                </div>
+                <h3>비디오 튜토리얼</h3>
+                <p>실제 화면을 보면서 따라 할 수 있는 비디오 강의입니다.</p>
+                <a href="#" class="resource-btn">영상 보기</a>
+            </div>
+
+            <div class="resource-card">
+                <div class="resource-icon">
+                    <i class="fas fa-download"></i>
+                </div>
+                <h3>자료 다운로드</h3>
+                <p>학습에 필요한 템플릿, 체크리스트 등을 다운로드하세요.</p>
+                <a href="#" class="resource-btn">자료 받기</a>
+            </div>
+
+            <div class="resource-card">
+                <div class="resource-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>커뮤니티</h3>
+                <p>다른 학습자들과 지식을 공유하고 함께 성장하세요.</p>
+                <a href="#" class="resource-btn">참여하기</a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo-section">
+                        <img src="images/hero-banner.jpg" alt="TG 건물" class="footer-building-image">
+                        <div class="footer-text-content">
+                            <h4>TG AI 캠퍼스</h4>
+                            <p>AI 기술 교육 전문 플랫폼</p>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>AI 교육 과정</h4>
+                    <ul>
+                        <li><a href="manuals.html#tab-basics-link">기초편</a></li>
+                        <li><a href="manuals.html#tab-advanced-link">실전편</a></li>
+                        <li><a href="manuals.html#tab-prompt-link">프롬프트</a></li>
+                        <li><a href="manuals.html#tab-job-link">직무별 활용</a></li>
+                        <li><a href="manuals.html#tab-advanced-ai-link">AI 고도화</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>AI 실전</h4>
+                    <ul>
+                        <li><a href="manual-prompt-basic.html">프롬프트 작성법</a></li>
+                        <li><a href="manual-automation.html">업무 자동화</a></li>
+                        <li><a href="manual-workflow.html">워크플로우 구축</a></li>
+                        <li><a href="manual-collaboration.html">AI 협업 도구</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>학습 지원</h4>
+                    <ul>
+                        <li><a href="support.html">학습 도우미</a></li>
+                        <li><a href="notices.html">공지사항</a></li>
+                        <li><a href="dictionary.html">AI 용어 사전</a></li>
+                        <li><a href="dashboard.html">학습 현황</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>TG 라운지</h4>
+                    <ul>
+                        <li><a href="about.html">TG AI 캠퍼스 소개</a></li>
+                        <li><a href="tg-family.html">TG 패밀리</a></li>
+                        <li><a href="news.html">TG Alliance 소식</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 TG AI 캠퍼스. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="js/main.js"></script>
+    <script>
+        // FAQ 토글 기능
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const answer = this.nextElementSibling;
+                    const isActive = this.classList.contains('active');
+                    
+                    // 현재 질문 토글
+                    this.classList.toggle('active');
+                    answer.classList.toggle('active');
+                    
+                    // 다른 질문들은 닫기 (선택적)
+                    if (!isActive) {
+                        faqQuestions.forEach(otherQuestion => {
+                            if (otherQuestion !== this) {
+                                otherQuestion.classList.remove('active');
+                                otherQuestion.nextElementSibling.classList.remove('active');
+                            }
+                        });
+                    }
+                });
+            });
+
+            // 카테고리 필터링
+            const categoryTabs = document.querySelectorAll('.category-tab');
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            categoryTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const category = this.dataset.category;
+                    
+                    // 활성 탭 변경
+                    categoryTabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // FAQ 아이템 필터링
+                    faqItems.forEach(item => {
+                        if (category === 'all' || item.dataset.category === category) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // 검색 기능
+            const searchInput = document.querySelector('.search-input');
+            const searchBtn = document.querySelector('.search-btn');
+            
+            function performSearch() {
+                const searchTerm = searchInput.value.toLowerCase();
+                // 여기에 검색 로직 구현
+                console.log('검색어:', searchTerm);
+                // 실제 검색 기능은 추후 구현
+            }
+            
+            searchBtn.addEventListener('click', performSearch);
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #111827;
+        }
+        
+        .search-input-wrapper {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .search-input {
+            flex: 1;
+            padding: 14px 20px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: #10b981;
+        }
+        
+        .search-button {
+            padding: 14px 30px;
+            background: #10b981;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .search-button:hover {
+            background: #059669;
+        }
+        
+        .category-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .category-tab {
+            padding: 10px 20px;
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #6b7280;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .category-tab:hover {
+            border-color: #10b981;
+            color: #10b981;
+        }
+        
+        .category-tab.active {
+            background: #10b981;
+            border-color: #10b981;
+            color: white;
+        }
+        
+        .faq-list {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .faq-item {
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        
+        .faq-question {
+            padding: 24px 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.2s ease;
+        }
+        
+        .faq-question:hover {
+            background: #f9fafb;
+        }
+        
+        .faq-icon {
+            width: 40px;
+            height: 40px;
+            background: #d1fae5;
+            color: #10b981;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .faq-text {
+            flex: 1;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #111827;
+        }
+        
+        .faq-toggle {
+            color: #6b7280;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 1000px;
+        }
+        
+        .faq-answer-content {
+            padding: 0 30px 24px 85px;
+            line-height: 1.8;
+            color: #4b5563;
+        }
+        
+        .contact-section {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-top: 40px;
+            text-align: center;
+        }
+        
+        .contact-section h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #111827;
+        }
+        
+        .contact-section p {
+            color: #6b7280;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        
+        .contact-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .contact-button {
+            padding: 14px 30px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .contact-button.primary {
+            background: #10b981;
+            color: white;
+        }
+        
+        .contact-button.primary:hover {
+            background: #059669;
+        }
+        
+        .contact-button.secondary {
+            background: white;
+            color: #10b981;
+            border: 2px solid #10b981;
+        }
+        
+        .contact-button.secondary:hover {
+            background: #f0fdf4;
+        }
+        
+        .empty-state, .loading-spinner {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        
+        .empty-state i {
+            font-size: 3.5rem;
+            color: #d1d5db;
+            margin-bottom: 15px;
+        }
+        
+        .spinner {
+            border: 4px solid #f3f4f6;
+            border-top: 4px solid #10b981;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* 반응형 */
+        @media (max-width: 768px) {
+            .support-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .search-input-wrapper {
+                flex-direction: column;
+            }
+            
+            .search-button {
+                width: 100%;
+            }
+            
+            .faq-question {
+                padding: 20px;
+            }
+            
+            .faq-answer-content {
+                padding: 0 20px 20px 20px;
+            }
+            
+            .contact-section {
+                padding: 30px 20px;
+            }
+            
+            .contact-buttons {
+                flex-direction: column;
+            }
+            
+            .contact-button {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header / Navigation -->
+    <header class="header">
+        <!-- Top Utility Bar -->
+        <div class="utility-bar">
+            <div class="container">
+                <div class="utility-wrapper">
+                    <a href="support.html" class="utility-link">학습 도우미</a>
+                    <a href="notices.html" class="utility-link">공지사항</a>
+                    <a href="tg-family.html" class="utility-link">TG패밀리</a>
+                    <a href="https://trigem.career.greetinghr.com/ko/intro" target="_blank" class="external-link tg-alliance">
+                        TG Alliance <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <a href="site2/index.html" class="external-link" style="color: #ff8c00;">
+                        TG 에듀테크 <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Navigation Bar -->
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <!-- Left Side: Logo + Menu -->
+                    <div class="nav-left">
+                        <a href="index.html" class="logo">
+                            <i class="fas fa-brain"></i>
+                            <span><span class="logo-tg">TG</span> AI 캠퍼스</span>
+                        </a>
+                        
+                        <ul class="nav-menu">
+                            <li><a href="about.html">TG AI 캠퍼스소개</a></li>
+                            <li><a href="manuals.html">AI 활용메뉴얼</a></li>
+                            <li><a href="dictionary.html">AI 용어사전</a></li>
+                            <li><a href="courses.html">AI 활용추천영상</a></li>
+                            <li><a href="news.html" style="color: #3b82f6; font-weight: 600;">TG 소식</a></li>
+                            <li><a href="dashboard.html">학습 현황</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Right Side: Search + Icons -->
+                    <div class="nav-right">
+                        <!-- Search -->
+                        <div class="search-wrapper">
+                            <form class="search-form">
+                                <button type="submit" class="search-btn">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                                <input type="text" class="search-input" placeholder="검색" autocomplete="off">
+                            </form>
+                        </div>
+                        
+                        <!-- Icon Actions -->
+                        <div class="icon-actions">
+                            <a href="mypage.html" class="icon-link" title="마이페이지">
+                                <img src="images/mypage-icon-new.png?v=2" alt="마이페이지" class="icon-img mypage-icon" style="width: auto !important; height: 20px !important; max-height: 20px !important;">
+                            </a>
+                            <a href="login.html" class="icon-link" id="authIcon" title="로그인">
+                                <img src="images/logout-icon.png" alt="로그인" class="icon-img" style="width: 24px !important; height: 24px !important; max-width: 24px !important; max-height: 24px !important;">
+                            </a>
+                        </div>
+                        
+                        <!-- Mobile Toggle -->
+                        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="support-hero">
+        <h1><i class="fas fa-headset"></i> 학습 도우미</h1>
+        <p>궁금하신 점을 빠르게 해결해드립니다</p>
+    </section>
+
+    <!-- Main Content -->
+    <main class="support-container">
+        <!-- Search Box -->
+        <div class="search-box">
+            <h2><i class="fas fa-search"></i> 무엇을 도와드릴까요?</h2>
+            <div class="search-input-wrapper">
+                <input type="text" class="search-input" id="faqSearchInput" placeholder="궁금한 내용을 검색해보세요...">
+                <button class="search-button" onclick="searchFAQ()">
+                    <i class="fas fa-search"></i> 검색
+                </button>
+            </div>
+        </div>
+
+        <!-- Category Tabs -->
+        <div class="category-tabs">
+            <button class="category-tab active" data-category="all">전체</button>
+            <button class="category-tab" data-category="수강신청">수강신청</button>
+            <button class="category-tab" data-category="결제/환불">결제/환불</button>
+            <button class="category-tab" data-category="강의수강">강의수강</button>
+            <button class="category-tab" data-category="기술지원">기술지원</button>
+            <button class="category-tab" data-category="기타">기타</button>
+        </div>
+
+        <!-- Loading State -->
+        <div class="loading-spinner" id="loadingSpinner">
+            <div class="spinner"></div>
+            <p style="color: #6b7280;">FAQ를 불러오는 중...</p>
+        </div>
+
+        <!-- FAQ List -->
+        <div class="faq-list" id="faqList" style="display: none;">
+            <!-- 동적으로 생성됨 -->
+        </div>
+
+        <!-- Empty State -->
+        <div class="empty-state" id="emptyState" style="display: none;">
+            <i class="fas fa-question-circle"></i>
+            <h3 style="color: #374151; margin-bottom: 10px;">검색 결과가 없습니다</h3>
+            <p style="color: #6b7280;">다른 검색어를 시도하거나 아래 문의하기를 이용해주세요</p>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="contact-section">
+            <h2>원하는 답변을 찾지 못하셨나요?</h2>
+            <p>더 자세한 상담이 필요하시면 문의하기를 이용해주세요.<br>전문 상담원이 친절하게 도와드리겠습니다.</p>
+            <div class="contact-buttons">
+                <a href="inquiry.html" class="contact-button primary">
+                    <i class="fas fa-paper-plane"></i> 문의하기
+                </a>
+                <a href="tel:1588-0000" class="contact-button secondary">
+                    <i class="fas fa-phone"></i> 1588-0000
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script>
+        let allFAQs = [];
+        let currentCategory = 'all';
+
+        // 페이지 로드 시 실행
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadFAQs();
+            setupCategoryTabs();
+            setupMobileMenu();
+            setupSearchEnter();
+        });
+
+        // FAQ 로드
+        async function loadFAQs() {
+            try {
+                const response = await fetch('tables/faqs?limit=100&sort=-order');
+                const data = await response.json();
+                
+                // status가 'published'인 FAQ만 필터링
+                allFAQs = data.data.filter(faq => faq.status === 'published');
+                
+                // 화면 표시
+                displayFAQs();
+                
+            } catch (error) {
+                console.error('FAQ 로드 실패:', error);
+                showEmptyState();
+            }
+        }
+
+        // FAQ 화면에 표시
+        function displayFAQs(searchQuery = '') {
+            const loadingSpinner = document.getElementById('loadingSpinner');
+            const faqList = document.getElementById('faqList');
+            const emptyState = document.getElementById('emptyState');
+
+            loadingSpinner.style.display = 'none';
+
+            // 필터링
+            let filteredFAQs = allFAQs;
+            
+            // 카테고리 필터
+            if (currentCategory !== 'all') {
+                filteredFAQs = filteredFAQs.filter(faq => faq.category === currentCategory);
+            }
+            
+            // 검색어 필터
+            if (searchQuery) {
+                filteredFAQs = filteredFAQs.filter(faq => 
+                    faq.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    faq.answer.toLowerCase().includes(searchQuery.toLowerCase())
+                );
+            }
+
+            // FAQ가 없는 경우
+            if (filteredFAQs.length === 0) {
+                faqList.style.display = 'none';
+                emptyState.style.display = 'block';
+                return;
+            }
+
+            // FAQ 목록 생성
+            faqList.innerHTML = filteredFAQs.map((faq, index) => `
+                <div class="faq-item" id="faq-${index}">
+                    <div class="faq-question" onclick="toggleFAQ(${index})">
+                        <div class="faq-icon">
+                            <i class="fas fa-question"></i>
+                        </div>
+                        <div class="faq-text">${escapeHtml(faq.question)}</div>
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            ${escapeHtml(faq.answer).replace(/\n/g, '<br>')}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            faqList.style.display = 'block';
+            emptyState.style.display = 'none';
+        }
+
+        // FAQ 토글
+        function toggleFAQ(index) {
+            const faqItem = document.getElementById(`faq-${index}`);
+            const isActive = faqItem.classList.contains('active');
+            
+            // 모든 FAQ 닫기
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // 클릭한 FAQ 열기 (이미 열려있었다면 닫힘)
+            if (!isActive) {
+                faqItem.classList.add('active');
+            }
+        }
+
+        // FAQ 검색
+        function searchFAQ() {
+            const searchQuery = document.getElementById('faqSearchInput').value.trim();
+            displayFAQs(searchQuery);
+        }
+
+        // Enter 키로 검색
+        function setupSearchEnter() {
+            document.getElementById('faqSearchInput')?.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    searchFAQ();
+                }
+            });
+        }
+
+        // 카테고리 탭 설정
+        function setupCategoryTabs() {
+            const tabs = document.querySelectorAll('.category-tab');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // 활성 탭 변경
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    
+                    // 카테고리 변경
+                    currentCategory = tab.dataset.category;
+                    
+                    // FAQ 다시 표시
+                    displayFAQs();
+                });
+            });
+        }
+
+        // HTML 이스케이프
+        function escapeHtml(text) {
+            if (!text) return '';
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // 빈 화면 표시
+        function showEmptyState() {
+            document.getElementById('loadingSpinner').style.display = 'none';
+            document.getElementById('faqList').style.display = 'none';
+            document.getElementById('emptyState').style.display = 'block';
+        }
+
+        // 모바일 메뉴
+        function setupMobileMenu() {
+            const toggle = document.getElementById('mobileMenuToggle');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            if (toggle) {
+                toggle.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                });
+            }
+        }
+
+        // 검색 기능
+        document.getElementById('searchForm')?.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const query = document.getElementById('searchInput').value;
+            if (query.trim()) {
+                window.location.href = `courses.html?search=${encodeURIComponent(query)}`;
+            }
+        });
+    </script>
+</body>
+</html>

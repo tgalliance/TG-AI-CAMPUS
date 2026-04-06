@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>샘플 영상 재생 - TG에듀테크</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #0f0f0f;
+            font-family: 'Noto Sans KR', sans-serif;
+            color: white;
+        }
+        
+        .video-container {
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 */
+            position: relative;
+            background: #000;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .video-info {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .video-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .video-meta {
+            display: flex;
+            gap: 20px;
+            color: #aaa;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .video-description {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 8px;
+            line-height: 1.8;
+            color: #ccc;
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+        
+        .back-button:hover {
+            background: #5a67d8;
+        }
+    </style>
+</head>
+<body>
+    <div class="video-container">
+        <iframe
+            src="https://www.youtube.com/embed/aircAruvnKk?autoplay=1&rel=0"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+        </iframe>
+    </div>
+    
+    <div class="video-info">
+        <h1 class="video-title">신경망이란 무엇인가? (Neural Networks)</h1>
+        <div class="video-meta">
+            <span><i class="fas fa-book"></i> AI 기초 과정</span>
+            <span><i class="fas fa-clock"></i> 19:13</span>
+            <span><i class="fas fa-user"></i> 3Blue1Brown</span>
+        </div>
+        <div class="video-description">
+            <p><strong>📚 강의 소개</strong></p>
+            <p>신경망(Neural Networks)의 기본 개념을 시각적으로 이해하기 쉽게 설명하는 고품질 교육 영상입니다.</p>
+            <br>
+            <p><strong>🎯 학습 목표</strong></p>
+            <ul style="margin-left: 20px; line-height: 2;">
+                <li>신경망의 기본 구조 이해</li>
+                <li>뉴런과 가중치의 개념</li>
+                <li>순전파(Forward Propagation) 이해</li>
+                <li>활성화 함수의 역할</li>
+            </ul>
+        </div>
+        <a href="recommended.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> 추천강의로 돌아가기
+        </a>
+    </div>
+</body>
+</html>

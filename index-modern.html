@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TG AI 캠퍼스 - 전사 직원 AI 교육 플랫폼</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/enhanced-styles.css">
+    <link rel="stylesheet" href="css/sections.css">
+    <link rel="stylesheet" href="css/samsung-nav.css?v=3">
+    <link rel="stylesheet" href="css/apple-style.css">
+    <link rel="stylesheet" href="css/scroll-indicator.css">
+    <link rel="stylesheet" href="css/tg-news-style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* Modern Hero Banner - Hyundai/SK Style */
+        .modern-hero {
+            position: relative;
+            height: 70vh;
+            min-height: 500px;
+            max-height: 700px;
+            background: #000;
+            overflow: hidden;
+        }
+
+        .modern-hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .modern-hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.6;
+        }
+
+        .modern-hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(0,0,0,0.7), transparent);
+        }
+
+        .modern-hero-content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 0 60px;
+            color: white;
+        }
+
+        .modern-hero-title {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .modern-hero-title .highlight {
+            color: #0099FF;
+        }
+
+        .modern-hero-subtitle {
+            font-size: 1.3rem;
+            font-weight: 300;
+            line-height: 1.6;
+            max-width: 600px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        .modern-hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .modern-btn {
+            padding: 16px 32px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .modern-btn-primary {
+            background: #0099FF;
+            color: white;
+        }
+
+        .modern-btn-primary:hover {
+            background: #0077CC;
+            transform: translateY(-2px);
+        }
+
+        .modern-btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .modern-btn-outline:hover {
+            background: white;
+            color: #000;
+        }
+
+        /* Simple Card Grid - SK/LG Style */
+        .simple-section {
+            padding: 100px 0;
+            background: #fff;
+        }
+
+        .simple-section.gray-bg {
+            background: #f8f9fa;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            font-weight: 400;
+        }
+
+        .simple-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .simple-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+
+        .simple-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+        }
+
+        .simple-card-image {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .simple-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .simple-card:hover .simple-card-image img {
+            transform: scale(1.05);
+        }
+
+        .simple-card-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .badge-blue { background: #0099FF; }
+        .badge-green { background: #10b981; }
+        .badge-purple { background: #8b5cf6; }
+        .badge-orange { background: #f59e0b; }
+
+        .simple-card-content {
+            padding: 25px;
+        }
+
+        .simple-card-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .simple-card-description {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .simple-card-meta {
+            display: flex;
+            gap: 15px;
+            font-size: 0.85rem;
+            color: #999;
+        }
+
+        /* News Card - SK Style */
+        .news-card {
+            background: white;
+            border-radius: 0;
+            overflow: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .news-card:hover {
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .news-card-image {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .news-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .news-card-content {
+            padding: 25px;
+        }
+
+        .news-card-category {
+            display: inline-block;
+            font-size: 0.8rem;
+            color: #0099FF;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .news-card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .news-card-date {
+            font-size: 0.85rem;
+            color: #999;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #0099FF, #0077CC);
+            text-align: center;
+            color: white;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .cta-description {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            padding: 18px 40px;
+            background: white;
+            color: #0099FF;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255,255,255,0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .modern-hero {
+                height: 60vh;
+                min-height: 450px;
+            }
+
+            .modern-hero-content {
+                padding: 0 30px;
+            }
+
+            .modern-hero-title {
+                font-size: 2.2rem;
+            }
+
+            .modern-hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .modern-hero-buttons {
+                flex-direction: column;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .simple-section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header / Navigation -->
+    <header class="header">
+        <!-- Top Utility Bar -->
+        <div class="utility-bar">
+            <div class="container">
+                <div class="utility-wrapper">
+                    <a href="support.html" class="utility-link">학습 도우미</a>
+                    <a href="notices.html" class="utility-link">공지사항</a>
+                    <a href="tg-family.html" class="utility-link">TG패밀리</a>
+                    <a href="https://trigem.career.greetinghr.com/ko/intro" target="_blank" class="external-link tg-alliance">
+                        TG Alliance <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <a href="site2/index.html" class="external-link" style="color: #ff8c00;">
+                        TG 에듀테크 <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Navigation Bar -->
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <!-- Left Side: Logo + Menu -->
+                    <div class="nav-left">
+                        <a href="index.html" class="logo">
+                            <i class="fas fa-brain"></i>
+                            <span><span class="logo-tg">TG</span> AI 캠퍼스</span>
+                        </a>
+                        
+                        <ul class="nav-menu">
+                            <li><a href="about.html">TG AI 캠퍼스소개</a></li>
+                            <li><a href="manuals.html">AI 활용메뉴얼</a></li>
+                            <li><a href="dictionary.html">AI 용어사전</a></li>
+                            <li><a href="courses.html">AI 활용추천영상</a></li>
+                            <li><a href="news.html" style="color: #3b82f6; font-weight: 600;">TG 소식</a></li>
+                            <li><a href="dashboard.html">학습 현황</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Right Side: Search + Icons -->
+                    <div class="nav-right">
+                        <!-- Search -->
+                        <div class="search-wrapper">
+                            <form class="search-form">
+                                <button type="submit" class="search-btn">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                                <input type="text" class="search-input" placeholder="검색" autocomplete="off">
+                            </form>
+                        </div>
+                        
+                        <!-- Icon Actions -->
+                        <div class="icon-actions">
+                            <a href="mypage.html" class="icon-link" title="마이페이지">
+                                <img src="images/mypage-icon-new.png?v=2" alt="마이페이지" class="icon-img mypage-icon" style="width: auto !important; height: 20px !important; max-height: 20px !important;">
+                            </a>
+                            <a href="login.html" class="icon-link" id="authIcon" title="로그인">
+                                <img src="images/logout-icon.png" alt="로그인" class="icon-img" style="width: 24px !important; height: 24px !important; max-width: 24px !important; max-height: 24px !important;">
+                            </a>
+                        </div>
+                        
+                        <!-- Mobile Toggle -->
+                        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Modern Hero Banner -->
+    <section class="modern-hero">
+        <div class="modern-hero-bg">
+            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=80" alt="AI Technology">
+        </div>
+        <div class="modern-hero-overlay"></div>
+        <div class="modern-hero-content">
+            <h1 class="modern-hero-title">
+                AI 실무 역량을 키우는<br>
+                <span class="highlight">TG Alliance</span> 인을 위한 AI 캠퍼스
+            </h1>
+            <p class="modern-hero-subtitle">
+                프롬프트부터 AI 자동화까지<br>
+                전사 직원을 위한 체계적인 AI 교육 플랫폼
+            </p>
+            <div class="modern-hero-buttons">
+                <a href="manual-prompt-basic.html" class="modern-btn modern-btn-primary">
+                    <i class="fas fa-play-circle"></i> 프롬프트 엔지니어링
+                </a>
+                <a href="manuals.html" class="modern-btn modern-btn-outline">
+                    <i class="fas fa-book"></i> 전체 매뉴얼 보기
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI 활용추천영상 Section -->
+    <section class="simple-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">AI 활용추천영상</h2>
+                <p class="section-subtitle">실무에 바로 적용할 수 있는 AI 영상 콘텐츠</p>
+            </div>
+            
+            <div class="simple-grid">
+                <!-- Video Card 1 -->
+                <div class="simple-card" onclick="location.href='courses.html'">
+                    <div class="simple-card-image">
+                        <img src="https://i.ytimg.com/vi/bklDGWcF8Ds/maxresdefault.jpg" alt="ChatGPT 실전 활용법">
+                        <span class="simple-card-badge badge-blue">필수</span>
+                    </div>
+                    <div class="simple-card-content">
+                        <h3 class="simple-card-title">ChatGPT 실전 활용법</h3>
+                        <p class="simple-card-description">업무 효율을 10배 높이는 ChatGPT 활용 전략</p>
+                        <div class="simple-card-meta">
+                            <span><i class="fas fa-clock"></i> 15분</span>
+                            <span><i class="fas fa-user"></i> 전체</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Card 2 -->
+                <div class="simple-card" onclick="location.href='courses.html'">
+                    <div class="simple-card-image">
+                        <img src="https://i.ytimg.com/vi/SjhIlw3Iffs/maxresdefault.jpg" alt="프롬프트 엔지니어링">
+                        <span class="simple-card-badge badge-green">고급</span>
+                    </div>
+                    <div class="simple-card-content">
+                        <h3 class="simple-card-title">프롬프트 엔지니어링 마스터</h3>
+                        <p class="simple-card-description">효과적인 프롬프트 작성 방법과 실전 팁</p>
+                        <div class="simple-card-meta">
+                            <span><i class="fas fa-clock"></i> 22분</span>
+                            <span><i class="fas fa-user"></i> 중급</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Card 3 -->
+                <div class="simple-card" onclick="location.href='courses.html'">
+                    <div class="simple-card-image">
+                        <img src="https://i.ytimg.com/vi/T-D1KVIuvjA/maxresdefault.jpg" alt="AI 자동화 도구">
+                        <span class="simple-card-badge badge-purple">신규</span>
+                    </div>
+                    <div class="simple-card-content">
+                        <h3 class="simple-card-title">AI 자동화 도구 활용</h3>
+                        <p class="simple-card-description">반복 업무를 자동화하는 AI 도구 소개</p>
+                        <div class="simple-card-meta">
+                            <span><i class="fas fa-clock"></i> 18분</span>
+                            <span><i class="fas fa-user"></i> 전체</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Card 4 -->
+                <div class="simple-card" onclick="location.href='courses.html'">
+                    <div class="simple-card-image">
+                        <img src="https://i.ytimg.com/vi/aircAruvnKk/maxresdefault.jpg" alt="AI 에이전트">
+                        <span class="simple-card-badge badge-orange">트렌드</span>
+                    </div>
+                    <div class="simple-card-content">
+                        <h3 class="simple-card-title">AI 에이전트 시대</h3>
+                        <p class="simple-card-description">자율적으로 업무를 처리하는 AI 에이전트의 미래</p>
+                        <div class="simple-card-meta">
+                            <span><i class="fas fa-clock"></i> 28분</span>
+                            <span><i class="fas fa-user"></i> 전체</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="courses.html" class="modern-btn modern-btn-primary">
+                    전체 추천영상 보기 <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- TG 패밀리 Section -->
+    <section class="simple-section gray-bg">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">TG 패밀리</h2>
+                <p class="section-subtitle">함께 성장하는 TG 그룹의 다양한 사업 영역</p>
+            </div>
+            
+            <div class="simple-grid">
+                <!-- TG 나래 -->
+                <div class="simple-card" onclick="window.open('https://www.tgalliance.co.kr', '_blank')">
+                    <div class="simple-card-image" style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9)); display: flex; align-items: center; justify-content: center;">
+                        <div style="text-align: center; color: white;">
+                            <i class="fas fa-crown" style="font-size: 3rem; margin-bottom: 15px;"></i>
+                            <div style="font-size: 1.5rem; font-weight: 700;">TG 나래</div>
+                            <div style="font-size: 0.75rem; opacity: 0.9; margin-top: 5px;">Holdings Company</div>
+                        </div>
+                    </div>
+                    <div class="simple-card-content">
+                        <h3 class="simple-card-title">TG 나래</h3>
+                        <p class="simple-card-description">TG 그룹의 지주회사로서 계열사들의 시너지를 창출합니다.</p>
+                    </div>
+                </div>
+
+                <!-- TG 삼보 -->
+                <div class="simple-card" onclick="window.open('https://www.trigem.co.kr/company/company_history.jsp', '_blank')">
+                    <div class="simple-card-image" style="background: linear-gradient(135deg, rgba(30, 144, 255, 0.9), rgba(0, 191, 255, 0.9)); display: flex; align-items: center; justify-content: center;">
+                        <div style="text-align: center; color: white;">
+                            <i class="fas fa-desktop" style="font-size: 3rem; margin-bottom: 15px;"></i>
+                            <div style="font-size: 1.5rem; font-weight: 700;">TG 삼보</div>
+                            <div style="font-size: 0.75rem; opacity: 0.9; margin-top: 5px;">Computer Technology</div>
+                        </div>
+                    </div>
+                    <div class="simple-card-content">
+                        <h3 class="simple-card-title">TG 삼보</h3>
+                        <p class="simple-card-description">혁신적인 IT 기술로 디지털의 미래를 만들어갑니다.</p>
+                    </div>
+                </div>
+
+                <!-- TGS -->
+                <div class="simple-card">
+                    <div class="simple-card-image" style="background: linear-gradient(135deg, rgba(67, 233, 123, 0.9), rgba(56, 249, 215, 0.9)); display: flex; align-items: center; justify-content: center;">
+                        <div style="text-align: center; color: white;">
+                            <i class="fas fa-handshake" style="font-size: 3rem; margin-bottom: 15px;"></i>
+                            <div style="font-size: 1.5rem; font-weight: 700;">TGS</div>
+                            <div style="font-size: 0.75rem; opacity: 0.9; margin-top: 5px;">Service Provider</div>
+                        </div>
+                    </div>
+                    <div class="simple-card-content">
+                        <h3 class="simple-card-title">TGS</h3>
+                        <p class="simple-card-description">최상의 IT 서비스로 고객의 비즈니스를 지원합니다.</p>
+                    </div>
+                </div>
+
+                <!-- TG&Co -->
+                <div class="simple-card" onclick="window.open('https://tg.inostone.net/', '_blank')">
+                    <div class="simple-card-image" style="background: linear-gradient(135deg, rgba(255, 107, 107, 0.9), rgba(255, 168, 1, 0.9)); display: flex; align-items: center; justify-content: center;">
+                        <div style="text-align: center; color: white;">
+                            <i class="fas fa-mobile-alt" style="font-size: 3rem; margin-bottom: 15px;"></i>
+                            <div style="font-size: 1.5rem; font-weight: 700;">TG&Co</div>
+                            <div style="font-size: 0.75rem; opacity: 0.9; margin-top: 5px;">Device Supply</div>
+                        </div>
+                    </div>
+                    <div class="simple-card-content">
+                        <h3 class="simple-card-title">TG&Co</h3>
+                        <p class="simple-card-description">최적의 디바이스로 스마트 세상을 만들어갑니다.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="tg-family.html" class="modern-btn modern-btn-primary">
+                    전체 계열사 보기 <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- TG Alliance 소식 Section -->
+    <section class="simple-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">TG Alliance 소식</h2>
+                <p class="section-subtitle">TG와 함께하는 파트너사들의 최신 소식을 확인하세요</p>
+            </div>
+            
+            <div class="simple-grid">
+                <!-- News 1 -->
+                <div class="news-card" onclick="location.href='news-detail.html?id=1'">
+                    <div class="news-card-image">
+                        <img src="https://sspark.genspark.ai/cfimages?u1=gF1mtM87zAiLOII3oq6qdSThzgIF3nnQ6Omo%2F4uG%2FYTR55Q481bpcKjE8S43QRZBjepMP%2BCRpBB4UM2TtEGAs2U%2BRAdLUDHZbuScFF8iRQ48IIosfA3f%2FVGkQD5Ut4TDr9Kr&u2=xhE6nRa89Gv5pp4L&width=2560" alt="TG그린스위치">
+                    </div>
+                    <div class="news-card-content">
+                        <span class="news-card-category">보도자료</span>
+                        <h3 class="news-card-title">TG삼보컴퓨터, ESG 친환경 대전에서 'TG그린스위치 PC' 전시</h3>
+                        <p class="news-card-date">2022.11.11</p>
+                    </div>
+                </div>
+
+                <!-- News 2 -->
+                <div class="news-card" onclick="location.href='news-detail.html?id=2'">
+                    <div class="news-card-image">
+                        <img src="https://sspark.genspark.ai/cfimages?u1=jHDxX2LHTdc96uYwFDAIT%2BxNQufbmMlUH04upyXybpumdUVdcbznnoS7d4OyP7LjWp4lt0xih4DtA26pNZzycaWNATC%2Fon9UKXzPUdLAe0bmwT8RJW%2FuRGWrSzoAZbeJoLf%2B&u2=snSTogu%2BpJxb1xCY&width=2560" alt="스테이 스트롱">
+                    </div>
+                    <div class="news-card-content">
+                        <span class="news-card-category">공지</span>
+                        <h3 class="news-card-title">이홍선 삼보컴퓨터 회장 '스테이 스트롱' 캠페인 동참</h3>
+                        <p class="news-card-date">2020.07.07</p>
+                    </div>
+                </div>
+
+                <!-- News 3 -->
+                <div class="news-card" onclick="location.href='news-detail.html?id=3'">
+                    <div class="news-card-image">
+                        <img src="https://sspark.genspark.ai/cfimages?u1=PFE%2Fx%2Brr0EBdDZDuzIRCAv%2B3RxGXw4CIW4UwmVZhRQ8Vfz3eMNr%2BOaCfL8kRr%2B8WPSdH%2BKZ9Hxi1wkXP7cePHpBmQJQJ%2Fq1QmxzUZu0djNqEKPMDuzKIjZ5x%2FIrXJkq99q%2BP&u2=3ikmj42gqAV9h1%2F%2F&width=2560" alt="수탁 위탁 우수 기업">
+                    </div>
+                    <div class="news-card-content">
+                        <span class="news-card-category">수상</span>
+                        <h3 class="news-card-title">삼보컴퓨터, 수탁·위탁 우수 기업 선정</h3>
+                        <p class="news-card-date">2019.10.10</p>
+                    </div>
+                </div>
+
+                <!-- News 4 -->
+                <div class="news-card" onclick="location.href='news-detail.html?id=4'">
+                    <div class="news-card-image">
+                        <img src="https://sspark.genspark.ai/cfimages?u1=Fj9GJqm3bAw29Cm9XCKCdQjFmpvC8cqeCwbgmxFVMiEU0vQ8hDmz4jnUUASnNaGq8Dy3%2F%2FMwl4Mf9wjRv1vhfHhmr72l3%2Bm4VjaCuIWhWNQ01TpbEXLYivfwL0oYbXtsDO4y&u2=WKN6kyGRy2BW56V9&width=2560" alt="TG그린스위치 사용 확대">
+                    </div>
+                    <div class="news-card-content">
+                        <span class="news-card-category">신제품</span>
+                        <h3 class="news-card-title">삼보컴퓨터, PC 끄면 모니터도 꺼지는 'TG그린스위치' 사용 확대</h3>
+                        <p class="news-card-date">2019.08.19</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="news.html" class="modern-btn modern-btn-primary">
+                    전체 소식 보기 <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">지금 바로 AI 학습을 시작하세요</h2>
+            <p class="cta-description">전사 직원을 위한 체계적인 AI 교육이 준비되어 있습니다</p>
+            <a href="manuals.html" class="cta-button">
+                AI 활용메뉴얼 시작하기 <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>TG AI 캠퍼스</h3>
+                    <p>전사 직원 AI 교육 플랫폼</p>
+                </div>
+                <div class="footer-section">
+                    <h4>빠른 링크</h4>
+                    <ul>
+                        <li><a href="about.html">캠퍼스소개</a></li>
+                        <li><a href="manuals.html">AI 활용메뉴얼</a></li>
+                        <li><a href="dictionary.html">AI 용어사전</a></li>
+                        <li><a href="courses.html">AI 활용추천영상</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>고객 지원</h4>
+                    <ul>
+                        <li><a href="support.html">학습 도우미</a></li>
+                        <li><a href="notices.html">공지사항</a></li>
+                        <li><a href="news.html">TG 소식</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>TG 패밀리</h4>
+                    <ul>
+                        <li><a href="https://www.tgalliance.co.kr" target="_blank">TG Alliance</a></li>
+                        <li><a href="https://www.tgedutech.co.kr" target="_blank">TG 에듀테크</a></li>
+                        <li><a href="tg-family.html">TG 패밀리</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 TG AI Campus. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation State
+        function updateNavigation() {
+            const authIcon = document.getElementById('authIcon');
+            const isLoggedIn = localStorage.getItem('ai_learning_logged_in');
+            
+            if (isLoggedIn) {
+                authIcon.innerHTML = '<img src="images/login-icon.png" alt="로그아웃" class="icon-img">';
+                authIcon.title = '로그아웃';
+                authIcon.href = '#';
+                authIcon.classList.add('logged-in');
+                authIcon.onclick = function(e) {
+                    e.preventDefault();
+                    if (confirm('로그아웃 하시겠습니까?')) {
+                        localStorage.removeItem('ai_learning_logged_in');
+                        localStorage.removeItem('ai_learning_user');
+                        alert('로그아웃 되었습니다.');
+                        location.reload();
+                    }
+                };
+            } else {
+                authIcon.innerHTML = '<img src="images/logout-icon.png" alt="로그인" class="icon-img">';
+                authIcon.title = '로그인';
+                authIcon.href = 'login.html';
+                authIcon.classList.remove('logged-in');
+                authIcon.onclick = null;
+            }
+        }
+        
+        updateNavigation();
+        
+        // Mobile Menu Toggle
+        document.getElementById('mobileMenuToggle').addEventListener('click', function() {
+            document.querySelector('.nav-menu').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

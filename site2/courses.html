@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>강의 보기 - TG에듀테크</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/enhanced-styles.css">
+    <link rel="stylesheet" href="css/samsung-nav.css?v=3">
+    <link rel="stylesheet" href="css/courses-custom.css">
+    <link rel="stylesheet" href="css/playlist-sidebar.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header / Navigation -->
+    <header class="header">
+        <!-- Top Utility Bar -->
+        <div class="utility-bar">
+            <div class="container">
+                <div class="utility-wrapper">
+                    <a href="support.html" class="utility-link">학습 도우미</a>
+                    <a href="notices.html" class="utility-link">공지사항</a>
+                    <a href="#" class="utility-link">TG패밀리</a>
+                    <a href="https://trigem.career.greetinghr.com/ko/intro" target="_blank" class="external-link tg-alliance">
+                        TG Alliance <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <a href="index.html" class="external-link" style="color: #ff8c00;">
+                        TG 에듀테크 <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Navigation Bar -->
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <!-- Left Side: Logo + Menu -->
+                    <div class="nav-left">
+                        <a href="index.html" class="logo">
+                            <i class="fas fa-brain"></i>
+                            <span><span class="logo-tg">TG</span> AI 캠퍼스</span>
+                        </a>
+                        
+                        <ul class="nav-menu">
+                            <li><a href="about.html">TG AI 캠퍼스 소개</a></li>
+                            <li><a href="programs.html">강좌 소개</a></li>
+                            <li><a href="courses.html" class="active">AI 활용 추천영상</a></li>
+                            <li><a href="manuals.html">AI 활용 메뉴얼</a></li>
+                            <li><a href="dictionary.html">AI 용어 사전</a></li>
+                            <li><a href="dashboard.html">학습현황</a></li>
+                            <li><a href="#" style="color: #0099FF;">TG INSIDE</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Right Side: Search + Icons -->
+                    <div class="nav-right">
+                        <!-- Search -->
+                        <div class="search-wrapper">
+                            <form class="search-form">
+                                <button type="submit" class="search-btn">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                                <input type="text" class="search-input" placeholder="검색" autocomplete="off">
+                            </form>
+                        </div>
+                        
+                        <!-- Icon Actions -->
+                        <div class="icon-actions">
+                            <a href="mypage.html" class="icon-link" title="마이페이지">
+                                <img src="images/mypage-icon-new.png?v=2" alt="마이페이지" class="icon-img mypage-icon" style="width: auto !important; height: 20px !important; max-height: 20px !important;">
+                            </a>
+                            <a href="login.html" class="icon-link" id="authIcon" title="로그인">
+                                <img src="images/logout-icon.png" alt="로그인" class="icon-img" style="width: 24px !important; height: 24px !important; max-width: 24px !important; max-height: 24px !important;">
+                            </a>
+                        </div>
+                        
+                        <!-- Mobile Toggle -->
+                        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Course Player Section -->
+    <section class="course-player-section">
+        <div class="container">
+            <div class="player-layout">
+                <!-- Video Player Area -->
+                <div class="video-player-area">
+                    <div class="video-wrapper">
+                        <!-- Main Video Player -->
+                        <div id="videoPlayerContainer" class="video-container">
+                            <iframe id="mainVideoPlayer" 
+                                    src="https://www.youtube.com/embed/aircAruvnKk?autoplay=1&rel=0" 
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen
+                                    style="width: 100%; height: 100%; position: absolute; top: 0; left: 0;">
+                            </iframe>
+                            <div id="videoPlaceholder" class="video-placeholder" style="display: none;">
+                                <i class="fas fa-play-circle"></i>
+                                <p>왼쪽 목록에서 강의를 선택하세요</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Video Controls -->
+                        <div class="video-controls-bar">
+                            <div class="controls-left">
+                                <button id="bookmarkBtn" class="control-btn" title="북마크">
+                                    <i class="far fa-bookmark"></i>
+                                    <span>북마크</span>
+                                </button>
+                                <div class="playback-speed">
+                                    <button id="playbackSpeedBtn" class="control-btn" title="재생 속도">
+                                        <i class="fas fa-tachometer-alt"></i>
+                                        <span id="speedDisplay">1.0x</span>
+                                    </button>
+                                    <div id="speedMenu" class="speed-menu hidden">
+                                        <button data-speed="0.5">0.5x</button>
+                                        <button data-speed="0.75">0.75x</button>
+                                        <button data-speed="1" class="active">1.0x</button>
+                                        <button data-speed="1.25">1.25x</button>
+                                        <button data-speed="1.5">1.5x</button>
+                                        <button data-speed="2">2.0x</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="controls-right">
+                                <div class="progress-indicator">
+                                    <i class="fas fa-chart-line"></i>
+                                    <span id="courseProgress">0%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Video Info -->
+                        <div class="video-info">
+                            <div class="video-header">
+                                <h1 id="videoTitle" class="video-title">신경망이란 무엇인가? - AI 기초</h1>
+                                <div class="video-actions">
+                                    <button id="takeNoteBtn" class="btn btn-primary btn-sm">
+                                        <i class="fas fa-edit"></i> 노트 작성
+                                    </button>
+                                    <button id="takeQuizBtn" class="btn btn-outline btn-sm">
+                                        <i class="fas fa-question-circle"></i> 퀴즈 풀기
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="video-meta">
+                                <span id="videoInstructor"><i class="fas fa-user"></i> 3Blue1Brown</span>
+                                <span id="videoDuration"><i class="fas fa-clock"></i> 19:13</span>
+                                <span id="videoViews"><i class="fas fa-eye"></i> 2,847회</span>
+                                <span id="videoRating" class="video-rating">
+                                    <i class="fas fa-star"></i> <span id="ratingScore">4.9</span>
+                                </span>
+                            </div>
+                            <div class="video-description" id="videoDescription">
+                                <p><strong>신경망의 기본 구조와 동작 원리를 직관적으로 이해합니다.</strong></p>
+                                <p>인공 신경망이 어떻게 학습하고, 패턴을 인식하며, 문제를 해결하는지 수학적 개념과 시각적 애니메이션을 통해 배웁니다.</p>
+                                <br>
+                                <p><strong>📚 강의 목차:</strong></p>
+                                <ul style="list-style: disc; padding-left: 20px; line-height: 1.8;">
+                                    <li>0:00 - 인트로: 신경망의 개념</li>
+                                    <li>3:00 - 뉴런의 구조와 동작</li>
+                                    <li>6:30 - 가중치와 편향</li>
+                                    <li>10:00 - 활성화 함수</li>
+                                    <li>13:30 - 은닉층의 역할</li>
+                                    <li>16:00 - 역전파 알고리즘</li>
+                                    <li>18:30 - 마무리</li>
+                                </ul>
+                            </div>
+
+                            <!-- Tabs for Notes and Reviews -->
+                            <div class="video-tabs">
+                                <button class="video-tab-btn active" data-tab="notes">내 노트</button>
+                                <button class="video-tab-btn" data-tab="reviews">수강후기</button>
+                            </div>
+
+                            <!-- Notes Section -->
+                            <div id="notesSection" class="tab-content active">
+                                <div class="notes-container" id="notesContainer">
+                                    <p class="empty-state">아직 작성된 노트가 없습니다.</p>
+                                </div>
+                            </div>
+
+                            <!-- Reviews Section -->
+                            <div id="reviewsSection" class="tab-content">
+                                <div class="reviews-container" id="reviewsContainer">
+                                    <div class="review-form">
+                                        <h4>수강후기 작성</h4>
+                                        <div class="rating-input">
+                                            <span class="star" data-rating="1">★</span>
+                                            <span class="star" data-rating="2">★</span>
+                                            <span class="star" data-rating="3">★</span>
+                                            <span class="star" data-rating="4">★</span>
+                                            <span class="star" data-rating="5">★</span>
+                                        </div>
+                                        <textarea id="reviewText" placeholder="이 강의에 대한 솔직한 후기를 남겨주세요..."></textarea>
+                                        <button id="submitReview" class="btn btn-primary">후기 등록</button>
+                                    </div>
+                                    <div class="reviews-list" id="reviewsList">
+                                        <!-- Reviews will be dynamically added -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Playlist Sidebar -->
+                <div class="playlist-sidebar">
+                    <div class="playlist-header">
+                        <h3>강의 목록</h3>
+                        <span class="playlist-count" id="playlistCount">총 0개</span>
+                    </div>
+                    
+                    <!-- Course Category Tabs -->
+                    <div class="course-tabs">
+                        <button class="tab-btn active" data-category="all">전체</button>
+                        <button class="tab-btn" data-category="basic">기초</button>
+                        <button class="tab-btn" data-category="intermediate">중급</button>
+                        <button class="tab-btn" data-category="advanced">고급</button>
+                    </div>
+
+                    <!-- Search Box -->
+                    <div class="playlist-search">
+                        <input type="text" id="searchInput" placeholder="강의 검색...">
+                        <i class="fas fa-search"></i>
+                    </div>
+
+                    <!-- Video Playlist -->
+                    <div class="playlist-container" id="playlistContainer">
+                        <!-- Video items will be dynamically generated -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Courses Section -->
+    <section class="related-courses">
+        <div class="container">
+            <h2 class="section-title">추천 강의</h2>
+            <div class="courses-grid">
+                <div class="course-card">
+                    <div class="course-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=225&fit=crop" alt="AI 기초">
+                        <span class="course-badge">초급</span>
+                    </div>
+                    <div class="course-info">
+                        <h3>AI 기초 완전 정복</h3>
+                        <p>인공지능의 모든 것을 배웁니다</p>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1555255707-c07966088b7b?w=400&h=225&fit=crop" alt="머신러닝">
+                        <span class="course-badge">중급</span>
+                    </div>
+                    <div class="course-info">
+                        <h3>머신러닝 실전 프로젝트</h3>
+                        <p>실무에 바로 적용하는 ML</p>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=400&h=225&fit=crop" alt="딥러닝">
+                        <span class="course-badge">고급</span>
+                    </div>
+                    <div class="course-info">
+                        <h3>딥러닝 마스터클래스</h3>
+                        <p>최신 딥러닝 기술을 마스터</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>TG에듀테크</h4>
+                    <p>AI 기술 교육 전문 플랫폼</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>서비스</h4>
+                    <ul>
+                        <li><a href="courses.html">강의 과정</a></li>
+                        <li><a href="#">교육 컨설팅</a></li>
+                        <li><a href="#">기업 교육</a></li>
+                        <li><a href="#">자격증 과정</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>지원</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">공지사항</a></li>
+                        <li><a href="#">문의하기</a></li>
+                        <li><a href="#">이용약관</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>문의</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@ailearning.com</li>
+                        <li><i class="fas fa-phone"></i> 02-1234-5678</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 서울시 강남구</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 TG에듀테크. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Note Modal -->
+    <div id="noteModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-edit"></i> 노트 작성</h3>
+                <button class="modal-close" onclick="closeNoteModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="timestamp-display">
+                    <i class="fas fa-clock"></i>
+                    <span id="noteTimestamp">00:00</span>
+                </div>
+                <textarea id="noteTextarea" placeholder="이 시점에 대한 메모를 작성하세요..."></textarea>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeNoteModal()">취소</button>
+                <button class="btn btn-primary" onclick="saveNote()">저장</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quiz Modal -->
+    <div id="quizModal" class="modal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h3><i class="fas fa-question-circle"></i> 학습 퀴즈</h3>
+                <button class="modal-close" onclick="closeQuizModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="quizContent">
+                    <!-- Quiz will be dynamically generated -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/storage.js"></script>
+    <script src="js/courses.js"></script>
+    <script src="js/courses-enhanced.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/search.js"></script>
+    <script>
+        // 현재 영상 데이터 설정 (샘플)
+        currentVideoData = {
+            id: 'sample-video-001',
+            title: 'AI 직무별 프롬프트 활용법',
+            instructor: 'TG에듀테크',
+            duration: '45:30'
+        };
+
+        // 페이지 로드 시 노트와 리뷰 로드
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof loadNotes === 'function') {
+                loadNotes();
+            }
+            if (typeof loadReviews === 'function') {
+                loadReviews();
+            }
+        });
+
+        // 로그인 상태 확인 및 네비게이션 업데이트
+        function updateNavigation() {
+            const isLoggedIn = localStorage.getItem('ai_learning_logged_in') === 'true';
+            const userData = JSON.parse(localStorage.getItem('ai_learning_user') || '{}');
+            
+            const authIcon = document.getElementById('authIcon');
+            
+            if (authIcon && isLoggedIn && userData.email) {
+                // 로그인된 상태 - 로그아웃 아이콘으로 변경
+                authIcon.innerHTML = '<img src="images/logout-icon.png" alt="로그아웃" class="icon-img">';
+                authIcon.title = '로그아웃';
+                authIcon.href = '#';
+                authIcon.classList.add('logged-in');
+                authIcon.onclick = function(e) {
+                    e.preventDefault();
+                    if (confirm('로그아웃 하시겠습니까?')) {
+                        localStorage.removeItem('ai_learning_logged_in');
+                        localStorage.removeItem('ai_learning_user');
+                        alert('로그아웃 되었습니다.');
+                        location.reload();
+                    }
+                };
+            }
+        }
+        
+        // 페이지 로드 시 실행
+        updateNavigation();
+        
+        // 추천강의에서 넘어온 영상 재생
+        const urlParams = new URLSearchParams(window.location.search);
+        const videoId = urlParams.get('videoId');
+        
+        if (videoId) {
+            console.log('🎬 추천강의에서 영상 재생 요청:', videoId);
+            
+            // localStorage에서 영상 데이터 가져오기
+            const currentVideoData = localStorage.getItem('playVideo');
+            
+            if (currentVideoData) {
+                try {
+                    const videoData = JSON.parse(currentVideoData);
+                    console.log('✅ 영상 데이터 로드:', videoData);
+                    
+                    // 영상 플레이어에 URL 설정
+                    const videoPlayer = document.getElementById('mainVideoPlayer');
+                    if (videoPlayer) {
+                        // YouTube embed URL인 경우
+                        if (videoData.url.includes('youtube.com') || videoData.url.includes('youtu.be')) {
+                            // URL 정리
+                            let cleanUrl = videoData.url;
+                            
+                            // watch?v= 형식을 embed로 변환
+                            if (cleanUrl.includes('watch?v=')) {
+                                const vId = cleanUrl.split('watch?v=')[1].split('&')[0];
+                                cleanUrl = `https://www.youtube.com/embed/${vId}`;
+                            }
+                            // & 를 ? 로 수정
+                            cleanUrl = cleanUrl.replace(/embed\/([^&?]+)&/, 'embed/$1?');
+                            
+                            console.log('📺 YouTube URL:', cleanUrl);
+                            
+                            // iframe으로 교체
+                            const playerContainer = videoPlayer.parentElement;
+                            playerContainer.innerHTML = `
+                                <iframe 
+                                    id="mainVideoPlayer"
+                                    width="100%" 
+                                    height="100%" 
+                                    src="${cleanUrl}?autoplay=1&rel=0" 
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen
+                                    style="width: 100%; height: 100%; min-height: 500px;">
+                                </iframe>
+                            `;
+                        } else {
+                            // 일반 비디오 파일
+                            videoPlayer.src = videoData.url;
+                            videoPlayer.play();
+                        }
+                        
+                        // 제목 업데이트
+                        const titleElement = document.querySelector('.video-title, h1');
+                        if (titleElement) {
+                            titleElement.textContent = videoData.title;
+                        }
+                    }
+                    
+                    // 사용 후 localStorage 정리
+                    localStorage.removeItem('playVideo');
+                    
+                } catch (error) {
+                    console.error('❌ 영상 데이터 파싱 실패:', error);
+                }
+            } else {
+                console.log('⚠️ localStorage에 영상 데이터가 없습니다.');
+            }
+        }
+        
+        // 모바일 메뉴 토글
+        document.getElementById('mobileMenuToggle')?.addEventListener('click', function() {
+            document.querySelector('.nav-menu').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

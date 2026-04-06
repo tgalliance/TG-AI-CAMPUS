@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TG 라운지 - TG AI 캠퍼스</title>
+    <link rel="stylesheet" href="css/style.css?v=8">
+    <link rel="stylesheet" href="css/samsung-nav.css?v=6">
+    <link rel="stylesheet" href="css/tg-news-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* News Page Hero Banner - TG Family Style */
+        .news-hero {
+            position: relative;
+            height: 45vh;
+            min-height: 400px;
+            max-height: 500px;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.5));
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 0 60px;
+            color: white;
+        }
+
+        .news-hero h1 {
+            font-size: 5rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            line-height: 1.2;
+            letter-spacing: -2px;
+        }
+
+        .news-hero h1 .tg-blue {
+            color: #0099FF;
+        }
+
+        .news-hero p {
+            font-size: 1.5rem;
+            font-weight: 300;
+            line-height: 1.6;
+            max-width: 600px;
+            opacity: 0.95;
+        }
+
+        @media (max-width: 768px) {
+            .news-hero {
+                height: 40vh;
+                min-height: 350px;
+            }
+
+            .hero-content {
+                padding: 0 30px;
+            }
+
+            .news-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .news-hero p {
+                font-size: 1.1rem;
+            }
+        }
+
+        .news-container {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .news-filters {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 45px 12px 20px;
+            border: 2px solid #e5e7eb;
+            border-radius: 25px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .search-box button {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #667eea;
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .search-box button:hover {
+            background: #5568d3;
+        }
+
+        .category-filters {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            padding: 8px 18px;
+            border: 1px solid #333;
+            background: white;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s;
+            color: #333;
+            position: relative;
+            padding-right: 35px;
+        }
+        
+        .category-btn::after {
+            content: '▼';
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.7rem;
+            color: #333;
+        }
+
+        .category-btn:hover {
+            background: #f5f5f5;
+            border-color: #000;
+        }
+
+        .category-btn.active {
+            background: #333;
+            color: white;
+            border-color: #333;
+        }
+        
+        .category-btn.active::after {
+            color: white;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin-bottom: 60px;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 1.5rem;
+        }
+        
+        @media (max-width: 1200px) {
+            .news-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (max-width: 900px) {
+            .news-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .news-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+        }
+
+        .news-card-header {
+            padding: 25px 25px 15px;
+            flex: 1;
+        }
+
+        .news-category {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .news-category.협약체결 {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .news-category.보도자료 {
+            background: #fce7f3;
+            color: #be185d;
+        }
+
+        .news-category.수상 {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .news-category.이벤트 {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .news-category.공지 {
+            background: #e0e7ff;
+            color: #4338ca;
+        }
+
+        .news-category.신제품 {
+            background: #fce7f3;
+            color: #9f1239;
+        }
+
+        .news-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #1f2937;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .news-summary {
+            font-size: 0.95rem;
+            color: #6b7280;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .news-card-footer {
+            padding: 0 25px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #f3f4f6;
+            padding-top: 15px;
+            margin: 0 25px 25px;
+        }
+
+        .news-date {
+            font-size: 0.85rem;
+            color: #9ca3af;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .news-link {
+            color: #667eea;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s;
+        }
+
+        .news-link:hover {
+            gap: 10px;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 60px;
+        }
+
+        .pagination button {
+            padding: 10px 18px;
+            border: 2px solid #e5e7eb;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+            color: #666;
+        }
+
+        .pagination button:hover {
+            border-color: #667eea;
+            color: #667eea;
+        }
+
+        .pagination button.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .pagination button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .no-results i {
+            font-size: 4rem;
+            color: #d1d5db;
+            margin-bottom: 20px;
+        }
+
+        .no-results h3 {
+            font-size: 1.5rem;
+            color: #6b7280;
+            margin-bottom: 10px;
+        }
+
+        .no-results p {
+            color: #9ca3af;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .news-hero h1 {
+                font-size: 2rem;
+            }
+
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .news-filters {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .search-box {
+                min-width: 100%;
+            }
+
+            .category-filters {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <!-- Top Utility Bar -->
+        <div class="utility-bar">
+            <div class="container">
+                <div class="utility-wrapper">
+                    <a href="support.html" class="utility-link">학습 도우미</a>
+                    <a href="notices.html" class="utility-link">공지사항</a>
+                    <a href="tg-family.html" class="utility-link">TG패밀리</a>
+                    <a href="https://trigem.career.greetinghr.com/ko/intro" target="_blank" class="external-link tg-alliance">
+                        TG Alliance <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <a href="site2/index.html" class="external-link" style="color: #ff8c00;">
+                        TG 에듀테크 <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Navigation Bar -->
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <!-- Left Side: Logo + Menu -->
+                    <div class="nav-left">
+                        <a href="index.html" class="logo">
+                            <i class="fas fa-brain"></i>
+                            <span><span class="logo-tg">TG</span> AI 캠퍼스</span>
+                        </a>
+                        
+                        <ul class="nav-menu">
+                            <li><a href="about.html">TG AI 캠퍼스소개</a></li>
+                            <li><a href="manuals.html">AI 활용메뉴얼</a></li>
+                            <li><a href="dictionary.html">AI 용어사전</a></li>
+                            <li><a href="courses.html">AI 활용추천영상</a></li>
+                            <li><a href="news.html" class="active" style="color: #3b82f6; font-weight: 600;">TG 라운지</a></li>
+                            <li><a href="dashboard.html">학습 현황</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Right Side: Icons -->
+                    <div class="nav-right">
+                        <div class="icon-actions">
+                            <a href="mypage.html" class="icon-link"><img src="images/mypage-icon-new.png?v=2" alt="마이페이지" style="height: 20px;"></a>
+                            <a href="login.html" class="icon-link"><img src="images/logout-icon.png" alt="로그인" style="height: 24px;"></a>
+                        </div>
+                        <button class="mobile-menu-toggle"><i class="fas fa-bars"></i></button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="news-hero">
+        <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1920&q=80" alt="TG News" class="hero-image">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>
+                <span class="tg-blue">TG</span> 라운지
+            </h1>
+            <p>
+                TG의 라운지와 커뮤니티 소식을 확인하세요
+            </p>
+        </div>
+    </section>
+
+    <!-- News Content -->
+    <div class="news-container">
+        <!-- Filters -->
+        <div class="news-filters">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="뉴스 검색...">
+                <button onclick="searchNews()">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            <div class="category-filters">
+                <button class="category-btn active" data-category="전체">전체</button>
+                <button class="category-btn" data-category="협약체결">협약체결</button>
+                <button class="category-btn" data-category="보도자료">보도자료</button>
+                <button class="category-btn" data-category="수상">수상</button>
+                <button class="category-btn" data-category="이벤트">이벤트</button>
+                <button class="category-btn" data-category="공지">공지</button>
+            </div>
+        </div>
+
+        <!-- News Grid -->
+        <div class="news-grid" id="newsGrid">
+            <!-- News cards will be inserted here by JavaScript -->
+        </div>
+
+        <!-- No Results -->
+        <div class="no-results" id="noResults" style="display: none;">
+            <i class="fas fa-search"></i>
+            <h3>검색 결과가 없습니다</h3>
+            <p>다른 키워드로 검색해보세요</p>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination" id="pagination">
+            <!-- Pagination buttons will be inserted here by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo-section">
+                        <img src="https://www.genspark.ai/api/files/s/qiWbG8fk" alt="TG 건물" class="footer-building-image">
+                        <div class="footer-text-content">
+                            <h4>TG AI 캠퍼스</h4>
+                            <p>AI 기술 교육 전문 플랫폼</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>서비스</h4>
+                    <ul>
+                        <li><a href="courses.html">강의 과정</a></li>
+                        <li><a href="programs.html">교육 프로그램</a></li>
+                        <li><a href="manuals.html">AI 메뉴얼</a></li>
+                        <li><a href="news.html" style="color: #3b82f6; font-weight: 600;">TG 라운지</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>지원</h4>
+                    <ul>
+                        <li><a href="support.html">FAQ</a></li>
+                        <li><a href="notices.html">공지사항</a></li>
+                        <li><a href="inquiry.html">문의하기</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>회사</h4>
+                    <ul>
+                        <li><a href="about.html">회사소개</a></li>
+                        <li><a href="#">채용정보</a></li>
+                        <li><a href="#">파트너십</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 TG AI 캠퍼스. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/news-data.js"></script>
+    <script>
+        // State
+        let currentPage = 1;
+        let currentCategory = '전체';
+        let currentSearchTerm = '';
+        const itemsPerPage = 9;
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            renderNews();
+            setupCategoryFilters();
+            setupSearch();
+        });
+
+        // Category Filter Setup
+        function setupCategoryFilters() {
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    currentCategory = this.dataset.category;
+                    currentPage = 1;
+                    renderNews();
+                });
+            });
+        }
+
+        // Search Setup
+        function setupSearch() {
+            const searchInput = document.getElementById('searchInput');
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    searchNews();
+                }
+            });
+        }
+
+        function searchNews() {
+            currentSearchTerm = document.getElementById('searchInput').value.toLowerCase();
+            currentPage = 1;
+            renderNews();
+        }
+
+        // Filter News
+        function getFilteredNews() {
+            return newsData.filter(news => {
+                const matchesCategory = currentCategory === '전체' || news.category === currentCategory;
+                const matchesSearch = currentSearchTerm === '' || 
+                    news.title.toLowerCase().includes(currentSearchTerm) ||
+                    news.summary.toLowerCase().includes(currentSearchTerm);
+                return matchesCategory && matchesSearch;
+            });
+        }
+
+        // Render News
+        function renderNews() {
+            const filteredNews = getFilteredNews();
+            const newsGrid = document.getElementById('newsGrid');
+            const noResults = document.getElementById('noResults');
+            
+            if (filteredNews.length === 0) {
+                newsGrid.style.display = 'none';
+                noResults.style.display = 'block';
+                document.getElementById('pagination').style.display = 'none';
+                return;
+            }
+
+            newsGrid.style.display = 'grid';
+            noResults.style.display = 'none';
+            document.getElementById('pagination').style.display = 'flex';
+
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const pageNews = filteredNews.slice(startIndex, endIndex);
+
+            newsGrid.innerHTML = pageNews.map(news => `
+                <div class="news-card" onclick="location.href='news-detail.html?id=${news.id}'">
+                    <div class="news-card-header">
+                        <span class="news-category ${news.category}">${news.category}</span>
+                        <h3 class="news-title">${news.title}</h3>
+                        <p class="news-summary">${news.summary}</p>
+                    </div>
+                    <div class="news-card-footer">
+                        <span class="news-date">
+                            <i class="far fa-calendar"></i>
+                            ${news.date}
+                        </span>
+                        <span class="news-link">
+                            자세히 보기
+                            <i class="fas fa-arrow-right"></i>
+                        </span>
+                    </div>
+                </div>
+            `).join('');
+
+            renderPagination(filteredNews.length);
+        }
+
+        // Render Pagination
+        function renderPagination(totalItems) {
+            const totalPages = Math.ceil(totalItems / itemsPerPage);
+            const pagination = document.getElementById('pagination');
+
+            let html = `
+                <button onclick="changePage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+            `;
+
+            for (let i = 1; i <= totalPages; i++) {
+                if (i === 1 || i === totalPages || (i >= currentPage - 1 && i <= currentPage + 1)) {
+                    html += `
+                        <button onclick="changePage(${i})" class="${i === currentPage ? 'active' : ''}">
+                            ${i}
+                        </button>
+                    `;
+                } else if (i === currentPage - 2 || i === currentPage + 2) {
+                    html += '<button disabled>...</button>';
+                }
+            }
+
+            html += `
+                <button onclick="changePage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            `;
+
+            pagination.innerHTML = html;
+        }
+
+        // Change Page
+        function changePage(page) {
+            const totalPages = Math.ceil(getFilteredNews().length / itemsPerPage);
+            if (page < 1 || page > totalPages) return;
+            currentPage = page;
+            renderNews();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
