@@ -176,7 +176,7 @@ body {
 
 .hero-with-image {
     padding: 60px 0;
-    min-height: 500px;
+    min-height: 600px;
     display: flex;
     align-items: center;
 }
