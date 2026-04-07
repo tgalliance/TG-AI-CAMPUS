@@ -407,7 +407,15 @@
         const TEST_ACCOUNTS = {
             'admin@tgai.com': '1234',
             'user@tgai.com': 'test1234',
-            'student@tgai.com': 'student123'
+            'student@tgai.com': 'student123',
+            '1234@': '1234'
+        };
+
+        const ACCOUNT_NAMES = {
+            'admin@tgai.com': '관리자',
+            'user@tgai.com': '사용자',
+            'student@tgai.com': '학생',
+            '1234@': '김티지'
         };
 
         // 페이지 로드 시 테스트 계정 안내
@@ -435,7 +443,7 @@
                 <div style="font-size: 0.85rem; color: #666; line-height: 1.6;">
                     <div>
                         <strong>김티지:</strong><br>
-                        이메일: 1234 / 비번: 1234
+                        이메일: 1234@ / 비번: 1234
                     </div>
                 </div>
             `;
@@ -475,7 +483,7 @@
                 // 대시보드로 이동
                 window.location.href = 'dashboard.html';
             } else {
-                alert('❌ 로그인 실패\n\n이메일 또는 비밀번호가 올바르지 않습니다.\n\n테스트 계정:\n• 이메일: 1234 / 비번: 1234');
+                alert('❌ 로그인 실패\n\n이메일 또는 비밀번호가 올바르지 않습니다.\n\n테스트 계정:\n• 이메일: 1234@ / 비번: 1234');
             }
         });
 
