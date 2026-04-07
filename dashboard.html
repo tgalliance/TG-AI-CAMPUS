@@ -223,13 +223,8 @@
         .overview-grid {
             display: flex;
             flex-direction: row;
-            gap: 0;
+            gap: 12px;
             margin-bottom: 24px;
-            background: var(--bg-white);
-            border-radius: 14px;
-            border: 1px solid var(--border);
-            box-shadow: 0 1px 6px rgba(0,0,0,0.06);
-            overflow: hidden;
         }
         .ov-card {
             flex: 1;
@@ -238,11 +233,14 @@
             display: flex;
             align-items: center;
             gap: 14px;
-            border-right: 1px solid var(--border);
+            background: var(--bg-white);
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+            overflow: hidden;
             transition: all 0.2s;
         }
-        .ov-card:last-child { border-right: none; }
-        .ov-card:hover { background: #f8fafc; }
+        .ov-card:hover { background: #f8fafc; box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
         .ov-card::after {
             content: '';
             position: absolute;
