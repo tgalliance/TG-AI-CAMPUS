@@ -433,17 +433,9 @@
                     <button onclick="this.parentElement.parentElement.remove()" style="border: none; background: none; cursor: pointer; font-size: 1.2rem; color: #999;">×</button>
                 </div>
                 <div style="font-size: 0.85rem; color: #666; line-height: 1.6;">
-                    <div style="margin-bottom: 0.5rem;">
-                        <strong>관리자:</strong><br>
-                        admin@tgai.com / 1234
-                    </div>
-                    <div style="margin-bottom: 0.5rem;">
-                        <strong>일반회원:</strong><br>
-                        user@tgai.com / test1234
-                    </div>
                     <div>
-                        <strong>학생:</strong><br>
-                        student@tgai.com / student123
+                        <strong>김티지:</strong><br>
+                        이메일: 1234 / 비번: 1234
                     </div>
                 </div>
             `;
@@ -467,23 +459,23 @@
 
             // 테스트 계정 확인
             if (TEST_ACCOUNTS[email] && TEST_ACCOUNTS[email] === password) {
-                // LocalStorage에 로그인 정보 저장 (프로토타입용)
+                const name = ACCOUNT_NAMES[email] || email.split('@')[0];
                 const userData = {
                     email: email,
                     loginTime: new Date().toISOString(),
                     remember: remember,
-                    name: email.split('@')[0]
+                    name: name
                 };
 
                 localStorage.setItem('ai_learning_user', JSON.stringify(userData));
                 localStorage.setItem('ai_learning_logged_in', 'true');
 
-                alert('✅ 로그인 성공!\n\n' + email + '님, 환영합니다!');
+                alert('✅ 로그인 성공!\n\n' + name + '님, 환영합니다!');
                 
-                // 메인 페이지로 이동
-                window.location.href = 'index.html';
+                // 대시보드로 이동
+                window.location.href = 'dashboard.html';
             } else {
-                alert('❌ 로그인 실패\n\n이메일 또는 비밀번호가 올바르지 않습니다.\n\n테스트 계정을 사용해주세요:\n• admin@tgai.com / 1234\n• user@tgai.com / test1234\n• student@tgai.com / student123');
+                alert('❌ 로그인 실패\n\n이메일 또는 비밀번호가 올바르지 않습니다.\n\n테스트 계정:\n• 이메일: 1234 / 비번: 1234');
             }
         });
 
