@@ -15,21 +15,53 @@
     <style>
         /* 학습 도우미 페이지 스타일 */
         .support-hero {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            padding: 80px 0 60px;
+            position: relative;
+            height: 45vh;
+            min-height: 320px;
+            max-height: 420px;
+            overflow: hidden;
+            background: #000;
             color: white;
-            text-align: center;
+        }
+        
+        .support-hero .hero-image {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            opacity: 0.6;
+        }
+        
+        .support-hero .hero-overlay {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(16,185,129,0.4), rgba(5,150,105,0.7));
+        }
+        
+        .support-hero .container {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 0 60px;
         }
         
         .support-hero h1 {
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: 700;
             margin-bottom: 20px;
         }
         
         .support-hero p {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             opacity: 0.95;
+            max-width: 600px;
         }
         
         .support-container {
@@ -409,6 +441,8 @@
         }
         
         @media (max-width: 768px) {
+            .support-hero { min-height: 250px; }
+            .support-hero .container { padding: 0 24px; }
             .support-hero h1 {
                 font-size: 2rem;
             }
@@ -504,6 +538,8 @@
 
     <!-- Hero Section -->
     <section class="support-hero">
+        <img src="images/support-banner.jpg" alt="학습 도우미" class="hero-image">
+        <div class="hero-overlay"></div>
         <div class="container">
             <h1><i class="fas fa-hands-helping"></i> 학습 도우미</h1>
             <p>AI 학습 과정에서 궁금한 점이 있다면 언제든지 물어보세요!<br>전문가 상담과 다양한 학습 자료로 여러분의 성공을 도와드립니다.</p>
