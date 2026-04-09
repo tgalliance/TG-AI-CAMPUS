@@ -285,19 +285,20 @@
 /* 마이페이지 고급 스타일링 */
 .learning-summary {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    margin-bottom: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
 }
 
 .learning-summary .summary-card {
     color: white !important;
-    border-radius: 16px;
-    padding: 24px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    border-radius: 14px;
+    padding: 18px 20px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
     overflow: hidden;
+    min-height: 160px;
 }
 
 .learning-summary .summary-card::before {
@@ -318,29 +319,30 @@
 }
 
 .summary-card .summary-icon {
-    font-size: 2rem;
-    margin-bottom: 16px;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
     opacity: 0.9;
 }
 
 .summary-card .summary-value {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     font-weight: 700;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
+    line-height: 1;
 }
 
 .summary-card .summary-label {
-    font-size: 0.95rem;
+    font-size: 0.88rem;
     opacity: 0.9;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
 }
 
 .summary-card .summary-progress {
     background: rgba(255,255,255,0.2);
-    height: 6px;
+    height: 5px;
     border-radius: 3px;
     overflow: hidden;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
 }
 
 .summary-card .summary-progress .progress-bar {
@@ -351,7 +353,7 @@
 }
 
 .summary-card .summary-detail {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     opacity: 0.85;
 }
 
@@ -363,12 +365,12 @@
 
 .activity-timeline .activity-item {
     display: flex;
-    gap: 20px;
-    margin-bottom: 24px;
-    padding: 20px;
+    gap: 14px;
+    margin-bottom: 16px;
+    padding: 14px 16px;
     background: white;
-    border-radius: 12px;
-    border-left: 4px solid #e5e7eb;
+    border-radius: 10px;
+    border-left: 3px solid #e5e7eb;
     transition: all 0.3s ease;
 }
 
@@ -380,14 +382,14 @@
 
 .activity-timeline .activity-icon {
     flex-shrink: 0;
-    width: 48px;
-    height: 48px;
-    border-radius: 12px;
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 1.25rem;
+    font-size: 1.1rem;
 }
 
 .activity-timeline .activity-content {
@@ -395,17 +397,17 @@
 }
 
 .activity-timeline .activity-title {
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 600;
     color: #1e293b;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
 }
 
 .activity-timeline .activity-description {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: #64748b;
-    margin-bottom: 8px;
-    line-height: 1.6;
+    margin-bottom: 6px;
+    line-height: 1.5;
 }
 
 .activity-timeline .activity-time {
@@ -419,15 +421,15 @@
 /* 추천 과정 카드 */
 .recommended-courses {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 18px;
 }
 
 .course-card-enhanced {
     background: white;
-    border-radius: 16px;
+    border-radius: 14px;
     overflow: hidden;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
     transition: all 0.3s ease;
 }
 
@@ -438,7 +440,7 @@
 
 .course-card-enhanced .course-thumbnail {
     position: relative;
-    height: 180px;
+    height: 150px;
     overflow: hidden;
 }
 
@@ -465,7 +467,7 @@
 }
 
 .course-card-enhanced .course-info {
-    padding: 20px;
+    padding: 16px;
 }
 
 .course-card-enhanced .course-title {
@@ -537,15 +539,15 @@
 /* 학습 목표 그리드 */
 .goals-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
 }
 
 .goal-card {
     background: white;
-    padding: 24px;
-    border-radius: 16px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    padding: 18px;
+    border-radius: 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
     transition: all 0.3s ease;
 }
 
@@ -558,12 +560,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
 }
 
 .goal-card .goal-progress-circle {
-    width: 56px;
-    height: 56px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     background: conic-gradient(
         #667eea 0% var(--progress),
@@ -578,8 +580,8 @@
 .goal-card .goal-progress-circle::before {
     content: '';
     position: absolute;
-    width: 44px;
-    height: 44px;
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
     background: white;
 }
@@ -620,16 +622,16 @@
 /* 배지 그리드 */
 .badges-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 16px;
 }
 
 .badge-card {
     background: white;
-    padding: 24px;
-    border-radius: 16px;
+    padding: 18px;
+    border-radius: 14px;
     text-align: center;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
     transition: all 0.3s ease;
 }
 
@@ -648,14 +650,14 @@
 }
 
 .badge-card .badge-icon {
-    width: 80px;
-    height: 80px;
-    margin: 0 auto 16px;
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 12px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2rem;
+    font-size: 1.75rem;
     color: white;
 }
 
@@ -701,4 +703,37 @@
         flex-direction: column;
         gap: 12px;
     }
+}
+
+/* 마이페이지 섹션 간격 최적화 */
+.mypage-container .content-section {
+    margin-bottom: 32px;
+}
+
+.mypage-container .content-header {
+    margin-bottom: 20px;
+}
+
+.mypage-container .content-title {
+    font-size: 1.3rem;
+    margin: 0;
+}
+
+.recent-activity {
+    margin-top: 32px !important;
+}
+
+.recommended-section {
+    margin-top: 32px !important;
+}
+
+.learning-goals {
+    margin-top: 32px !important;
+}
+
+/* 컨텐츠 헤더 버튼 스타일 */
+.content-header .btn-primary,
+.content-header .btn-secondary {
+    padding: 8px 16px;
+    font-size: 0.9rem;
 }
