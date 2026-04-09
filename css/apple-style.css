@@ -285,20 +285,32 @@
 /* 마이페이지 고급 스타일링 */
 .learning-summary {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
     margin-bottom: 32px;
+}
+
+@media (max-width: 1024px) {
+    .learning-summary {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .learning-summary {
+        grid-template-columns: 1fr;
+    }
 }
 
 .learning-summary .summary-card {
     color: white !important;
     border-radius: 14px;
-    padding: 16px 18px;
+    padding: 18px 20px;
     box-shadow: 0 4px 16px rgba(0,0,0,0.12);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
     overflow: hidden;
-    min-height: 120px;
+    min-height: 130px;
 }
 
 .learning-summary .summary-card::before {
