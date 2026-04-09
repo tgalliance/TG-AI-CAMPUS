@@ -147,12 +147,12 @@
         }
 
         .mypage-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px;
-            display: grid;
-            grid-template-columns: 280px 1fr;
-            gap: 30px;
+            max-width: 1200px !important;
+            margin: 0 auto !important;
+            padding: 40px !important;
+            display: grid !important;
+            grid-template-columns: 280px 1fr !important;
+            gap: 30px !important;
         }
 
         .sidebar-menu {
@@ -290,7 +290,7 @@
         .learning-summary {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            gap: 30px;
             margin-bottom: 30px;
         }
 
@@ -330,6 +330,236 @@
         .summary-label {
             color: #64748b;
             font-size: 0.9rem;
+        }
+
+        /* Bookmarks Section */
+        .bookmarks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .bookmark-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .bookmark-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .bookmark-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .bookmark-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #f59e0b, #f97316);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .bookmark-info {
+            flex: 1;
+        }
+
+        .bookmark-info h4 {
+            margin: 0 0 5px 0;
+            color: #1e293b;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .bookmark-info p {
+            margin: 0 0 10px 0;
+            color: #64748b;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .bookmark-meta {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .bookmark-type {
+            background: #e2e8f0;
+            color: #475569;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .bookmark-progress {
+            color: #94a3b8;
+            font-size: 0.8rem;
+        }
+
+        .bookmark-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+
+        .btn-icon {
+            width: 32px;
+            height: 32px;
+            border: none;
+            background: #f1f5f9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-icon:hover {
+            background: #e2e8f0;
+            color: #1e293b;
+        }
+
+        /* Certificates Section */
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .certificate-card {
+            background: #f8fafc;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            padding: 25px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .certificate-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .certificate-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .certificate-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #f59e0b, #f97316);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .certificate-info {
+            flex: 1;
+        }
+
+        .certificate-info h3 {
+            margin: 0 0 8px 0;
+            color: #1e293b;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .certificate-info p {
+            margin: 0;
+            color: #64748b;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .certificate-details {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f1f5f9;
+            border-radius: 12px;
+        }
+
+        .certificate-date,
+        .certificate-id {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #475569;
+            font-size: 0.9rem;
+        }
+
+        .certificate-date i,
+        .certificate-id i {
+            color: #f59e0b;
+        }
+
+        .certificate-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+        }
+
+        .certificate-actions .btn-primary {
+            background: linear-gradient(135deg, #f59e0b, #f97316);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .certificate-actions .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+        }
+
+        .certificate-actions .btn-secondary {
+            background: #f1f5f9;
+            color: #475569;
+            border: 1px solid #e2e8f0;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .certificate-actions .btn-secondary:hover {
+            background: #e2e8f0;
+            color: #1e293b;
         }
 
         /* 최근 활동 */
@@ -478,6 +708,7 @@
             background: #f8fafc;
             border-radius: 12px;
             border: 1px solid #e2e8f0;
+            margin-bottom: 15px;
         }
 
         .setting-info h4 {
@@ -723,14 +954,6 @@
                 
                 <div class="menu-section">
                     <h3 class="section-title">학습 관리</h3>
-                    <a href="dashboard.html" class="menu-item">
-                        <i class="fas fa-chart-line menu-icon"></i>
-                        <span>학습 현황</span>
-                    </a>
-                    <a href="curriculum.html" class="menu-item">
-                        <i class="fas fa-book menu-icon"></i>
-                        <span>교육 과정</span>
-                    </a>
                     <a href="#badges" class="menu-item" onclick="showSection('badges'); return false;">
                         <i class="fas fa-trophy menu-icon"></i>
                         <span>성취 배지</span>
@@ -744,10 +967,6 @@
                 
                 <div class="menu-section">
                     <h3 class="section-title">학습 도구</h3>
-                    <a href="#schedule" class="menu-item" onclick="showSection('schedule'); return false;">
-                        <i class="fas fa-calendar-alt menu-icon"></i>
-                        <span>학습 일정</span>
-                    </a>
                     <a href="#bookmarks" class="menu-item" onclick="showSection('bookmarks'); return false;">
                         <i class="fas fa-bookmark menu-icon"></i>
                         <span>북마크</span>
@@ -757,11 +976,10 @@
                         <i class="fas fa-sticky-note menu-icon"></i>
                         <span>학습 노트</span>
                     </a>
-                    </div>
+                </div>
             </aside>
 
             <!-- 메인 컨텐츠 영역 -->
-                        <!-- 메인 컨텐츠 영역 -->
             <main class="main-content">
                 <!-- 학습 요약 대시보드 -->
                 <div class="content-section" id="dashboard-summary" style="display: block;">
@@ -777,20 +995,20 @@
                     </div>
                     
                     <div class="learning-summary">
-                        <div class="summary-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <div class="summary-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
                             <div class="summary-top">
                                 <div class="summary-icon">
-                                    <i class="fas fa-book-open"></i>
+                                    <i class="fas fa-medal"></i>
                                 </div>
                                 <div class="summary-main">
-                                    <div class="summary-value">18</div>
-                                    <div class="summary-label">수강중인 과정</div>
+                                    <div class="summary-value">2,850</div>
+                                    <div class="summary-label">획득 포인트</div>
                                 </div>
                             </div>
                             <div class="summary-progress">
-                                <div class="progress-bar" style="width: 65%"></div>
+                                <div class="progress-bar" style="width: 57%"></div>
                             </div>
-                            <div class="summary-detail">평균 진도율 65%</div>
+                            <div class="summary-detail">다음 레벨까지 1,150P</div>
                         </div>
                         
                         <div class="summary-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
@@ -807,23 +1025,6 @@
                                 <div class="progress-bar" style="width: 80%"></div>
                             </div>
                             <div class="summary-detail">이번 주 +24시간</div>
-                        </div>
-
-                        
-                        <div class="summary-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
-                            <div class="summary-top">
-                                <div class="summary-icon">
-                                    <i class="fas fa-medal"></i>
-                                </div>
-                                <div class="summary-main">
-                                    <div class="summary-value">2,850</div>
-                                    <div class="summary-label">획득 포인트</div>
-                                </div>
-                            </div>
-                            <div class="summary-progress">
-                                <div class="progress-bar" style="width: 57%"></div>
-                            </div>
-                            <div class="summary-detail">다음 레벨까지 1,150P</div>
                         </div>
                     </div>
 
@@ -1161,7 +1362,7 @@
                             </div>
                             <label class="toggle-switch">
                                 <input type="checkbox" checked>
-                                <span class="slider"></span>
+                                <span class="toggle-slider"></span>
                             </label>
                         </div>
                         <div class="setting-item">
@@ -1171,7 +1372,7 @@
                             </div>
                             <label class="toggle-switch">
                                 <input type="checkbox">
-                                <span class="slider"></span>
+                                <span class="toggle-slider"></span>
                             </label>
                         </div>
                         <div class="setting-item">
@@ -1181,7 +1382,7 @@
                             </div>
                             <label class="toggle-switch">
                                 <input type="checkbox" checked>
-                                <span class="slider"></span>
+                                <span class="toggle-slider"></span>
                             </label>
                         </div>
                         <div class="setting-item">
@@ -1191,7 +1392,7 @@
                             </div>
                             <label class="toggle-switch">
                                 <input type="checkbox" checked>
-                                <span class="slider"></span>
+                                <span class="toggle-slider"></span>
                             </label>
                         </div>
                         <div class="setting-item">
@@ -1201,7 +1402,7 @@
                             </div>
                             <label class="toggle-switch">
                                 <input type="checkbox">
-                                <span class="slider"></span>
+                                <span class="toggle-slider"></span>
                             </label>
                         </div>
                     </div>
@@ -1223,7 +1424,7 @@
                             </div>
                             <label class="toggle-switch">
                                 <input type="checkbox" checked>
-                                <span class="slider"></span>
+                                <span class="toggle-slider"></span>
                             </label>
                         </div>
                         <div class="setting-item">
@@ -1233,7 +1434,7 @@
                             </div>
                             <label class="toggle-switch">
                                 <input type="checkbox" checked>
-                                <span class="slider"></span>
+                                <span class="toggle-slider"></span>
                             </label>
                         </div>
                         <div class="setting-item">
@@ -1243,7 +1444,7 @@
                             </div>
                             <label class="toggle-switch">
                                 <input type="checkbox" checked>
-                                <span class="slider"></span>
+                                <span class="toggle-slider"></span>
                             </label>
                         </div>
                         <div class="setting-item">
@@ -1253,7 +1454,7 @@
                             </div>
                             <label class="toggle-switch">
                                 <input type="checkbox">
-                                <span class="slider"></span>
+                                <span class="toggle-slider"></span>
                             </label>
                         </div>
                     </div>
@@ -1319,16 +1520,311 @@
                     </div>
                 </div>
 
+                <!-- bookmarks section -->
+                <div id="bookmarks" class="content-section" style="display: none;">
+                    <div class="content-header">
+                        <h2 class="content-title">
+                            <i class="fas fa-bookmark" style="color: #f59e0b; margin-right: 10px;"></i>
+                            북마크
+                        </h2>
+                    </div>
+                    
+                    <div class="bookmarks-grid">
+                        <div class="bookmark-card">
+                            <div class="bookmark-content">
+                                <div class="bookmark-icon">
+                                    <i class="fas fa-play-circle"></i>
+                                </div>
+                                <div class="bookmark-info">
+                                    <h4>AI 기초 입문</h4>
+                                    <p>인공지능의 기본 개념과 머신러닝의 이해</p>
+                                    <div class="bookmark-meta">
+                                        <span class="bookmark-type">영상</span>
+                                        <span class="bookmark-progress">15:32 / 45:00</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bookmark-actions">
+                                <button class="btn-icon" title="play">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                                <button class="btn-icon" title="remove">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="bookmark-card">
+                            <div class="bookmark-content">
+                                <div class="bookmark-icon">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                                <div class="bookmark-info">
+                                    <h4>프롬프트 엔지니어링 실전</h4>
+                                    <p>효과적인 AI 프롬프트 작성을 위한 고급 기법</p>
+                                    <div class="bookmark-meta">
+                                        <span class="bookmark-type">문서</span>
+                                        <span class="bookmark-progress">8페이지 / 25페이지</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bookmark-actions">
+                                <button class="btn-icon" title="open">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                                <button class="btn-icon" title="remove">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="bookmark-card">
+                            <div class="bookmark-content">
+                                <div class="bookmark-icon">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <div class="bookmark-info">
+                                    <h4>AI를 위한 파이썬 - 3장</h4>
+                                    <p>판다스와 넘파이를 활용한 데이터 분석</p>
+                                    <div class="bookmark-meta">
+                                        <span class="bookmark-type">코드</span>
+                                        <span class="bookmark-progress">line 142</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bookmark-actions">
+                                <button class="btn-icon" title="edit">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="btn-icon" title="remove">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="bookmark-card">
+                            <div class="bookmark-content">
+                                <div class="bookmark-icon">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <div class="bookmark-info">
+                                    <h4>머신러닝 기초 퀴즈</h4>
+                                    <p>ML 기본 개념에 대한 지식 확인</p>
+                                    <div class="bookmark-meta">
+                                        <span class="bookmark-type">퀴즈</span>
+                                        <span class="bookmark-progress">7번 문제 / 20개 문제</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bookmark-actions">
+                                <button class="btn-icon" title="continue">
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                                <button class="btn-icon" title="remove">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="bookmark-card">
+                            <div class="bookmark-content">
+                                <div class="bookmark-icon">
+                                    <i class="fas fa-book"></i>
+                                </div>
+                                <div class="bookmark-info">
+                                    <h4>텐서플로우 딥러닝</h4>
+                                    <p>이미지 인식을 위한 신경망 구축</p>
+                                    <div class="bookmark-meta">
+                                        <span class="bookmark-type">과정</span>
+                                        <span class="bookmark-progress">4모듈 / 8모듈</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bookmark-actions">
+                                <button class="btn-icon" title="resume">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                                <button class="btn-icon" title="remove">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="bookmark-card">
+                            <div class="bookmark-content">
+                                <div class="bookmark-icon">
+                                    <i class="fas fa-lightbulb"></i>
+                                </div>
+                                <div class="bookmark-info">
+                                    <h4>AI 윤리 가이드라인</h4>
+                                    <p>책임감 있는 AI 개발과 구현</p>
+                                    <div class="bookmark-meta">
+                                        <span class="bookmark-type">아티클</span>
+                                        <span class="bookmark-progress">2일 전 저장</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bookmark-actions">
+                                <button class="btn-icon" title="read">
+                                    <i class="fas fa-book-open"></i>
+                                </button>
+                                <button class="btn-icon" title="remove">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- certificates section -->
+                <div id="certificates" class="content-section" style="display: none;">
+                    <div class="content-header">
+                        <h2 class="content-title">
+                            <i class="fas fa-certificate" style="color: #f59e0b; margin-right: 10px;"></i>
+                            certificates
+                        </h2>
+                    </div>
+                    
+                    <div class="certificates-grid">
+                        <div class="certificate-card">
+                            <div class="certificate-header">
+                                <div class="certificate-icon">
+                                    <i class="fas fa-award"></i>
+                                </div>
+                                <div class="certificate-info">
+                                    <h3>AI Fundamentals</h3>
+                                    <p>AI( Arsificial I telligence) fundamentals f antrodu-titr</p>
+                                </div>
+                            </div>
+                            <div class="certificate-detailsa>
+                               s<div class="cerh"fica>e-date">
+                                    <i class="fas fa-ca</ndar"></i>
+                                    <span>2024-03-15</span>
+                                </div>
+                                <div class="certificate-id">
+                                    <i class="fas fa-hashtag"></i>
+                                    <span>TGA-2024-0001</span>
+                                </div>
+                            </div>
+                            <div classi>cetificat-actions">
+                                <button class="btn-priary" onclick="downloadCertificate('TGA-2024-0001')">
+                                    <i class="fas fa-download"></i>
+                                    Download
+                                </button>
+                                <button class="btn-secndary" onclick="iwCertificate('TGA-2024-0001')">
+                                    <i class="fas fa-eye"></i>
+                                    View
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="certificate-card">
+                            <div class="certificate-header">
+                                <div class="certificate-icon">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <div class="certificate-info">
+                                    <h3>Prompt Engineering</h3>
+                                    <p>prompt engineering best practices</p>
+                                </div>
+                            </div>
+                            <div class="certificate-details">
+                                <div class="certificate-date">
+                                    <i class="fas fa-calendar"></i>
+                                    <span>2024-02-28</span>
+                                </div>
+                                <div class="certificate-id">
+                                    <i class="fas fa-hashtag"></i>
+                                    <span>TGA-2024-0002</span>
+                                </div>
+                            </div>
+                            <div class="certificate-actions">
+                                <button class="btn-primary" onclick="downloadCertificate('TGA-2024-0002')">
+                                    <i class="fas fa-download"></i>
+                                    Download
+                                </button>
+                                <button class="btn-secondary" onclick="viewCertificate('TGA-2024-0002')">
+                                    <i class="fas fa-eye"></i>
+                                    View
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="certificate-card">
+                            <div class="certificate-header">
+                                <div class="certificate-icon">
+                                    <i class="fas fa-brain"></i>
+                                </div>
+                                <div class="certificate-info">
+                                    <h3>Machine Learning Basics</h3>
+                                    <p>machine learning basics quiz</p>
+                                </div>
+                            </div>
+                            <div class="certificate-details">
+                                <div class="certificate-date">
+                                    <i class="fas fa-calendar"></i>
+                                    <span>2024-01-20</span>
+                                </div>
+                                <div class="certificate-id">
+                                    <i class="fas fa-hashtag"></i>
+                                    <span>TGA-2024-0003</span>
+                                </div>
+                            </div>
+                            <div class="certificate-actions">
+                                <button class="btn-primary" onclick="downloadCertificate('TGA-2024-0003')">
+                                    <i class="fas fa-download"></i>
+                                    Download
+                                </button>
+                                <button class="btn-secondary" onclick="viewCertificate('TGA-2024-0003')">
+                                    <i class="fas fa-eye"></i>
+                                    View
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="certificate-card">
+                            <div class="certificate-header">
+                                <div class="certificate-icon">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <div class="certificate-info">
+                                    <h3>Deep Learning with TensorFlow</h3>
+                                    <p>deep learning with tensorflow</p>
+                                </div>
+                            </div>
+                            <div class="certificate-details">
+                                <div class="certificate-date">
+                                    <i class="fas fa-calendar"></i>
+                                    <span>2023-12-10</span>
+                                </div>
+                                <div class="certificate-id">
+                                    <i class="fas fa-hashtag"></i>
+                                    <span>TGA-2024-0004</span>
+                                </div>
+                            </div>
+                            <div class="certificate-actions">
+                                <button class="btn-primary" onclick="downloadCertificate('TGA-2024-0004')">
+                                    <i class="fas fa-download"></i>
+                                    Download
+                                </button>
+                                <button class="btn-secondary" onclick="viewCertificate('TGA-2024-0004')">
+                                    <i class="fas fa-eye"></i>
+                                    View
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </main>
 
         </div>
     </div>
 
-    <!-- 푸터 -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
+            <div class="footer-content" style="display: grid; grid-template-columns: minmax(260px, 1.8fr) repeat(4, minmax(180px, 1fr)); gap: 3rem; align-items: start;">
+                <div class="footer-section" style="min-width: 250px;">
                     <div class="footer-logo-section">
                         <img src="images/hero-banner.jpg" alt="TG 건물" class="footer-building-image">
                         <div class="footer-text-content">
@@ -1343,7 +1839,7 @@
                         <a href="#"><i class="fab fa-linkedin"></i></a>
                     </div>
                 </div>
-                <div class="footer-section">
+                <div class="footer-section" style="flex: 1; min-width: 250px;">
                     <h4>AI 교육 과정</h4>
                     <ul>
                         <li><a href="manuals.html#tab-basics-link">기초편</a></li>
@@ -1353,7 +1849,7 @@
                         <li><a href="manuals.html#tab-advanced-ai-link">AI 고도화</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
+                <div class="footer-section" style="flex: 1; min-width: 250px;">
                     <h4>AI 실전</h4>
                     <ul>
                         <li><a href="manual-prompt-basic.html">프롬프트 작성법</a></li>
@@ -1362,7 +1858,7 @@
                         <li><a href="manual-collaboration.html">AI 협업 도구</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
+                <div class="footer-section" style="flex: 1; min-width: 250px;">
                     <h4>학습 지원</h4>
                     <ul>
                         <li><a href="support.html">학습 도우미</a></li>
@@ -1371,7 +1867,7 @@
                         <li><a href="dashboard.html">학습 현황</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
+                <div class="footer-section" style="flex: 1; min-width: 250px;">
                     <h4>TG 라운지</h4>
                     <ul>
                         <li><a href="about.html">TG AI 캠퍼스 소개</a></li>
@@ -1390,24 +1886,74 @@
     <script>
         // 섹션 전환 함수
         function showSection(sectionId) {
-            // 모든 섹션 숨기기
-            document.querySelectorAll('.content-section').forEach(section => {
+            // Hide all sections
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => {
                 section.style.display = 'none';
             });
-            
-            // 선택된 섹션 보이기
-            const targetSection = document.getElementById(sectionId);
-            if (targetSection) {
-                targetSection.style.display = 'block';
+
+            // Show selected section
+            const selectedSection = document.getElementById(sectionId);
+            if (selectedSection) {
+                selectedSection.style.display = 'block';
             }
-            
-            // 메뉴 활성화 상태 업데이트
-            document.querySelectorAll('.menu-item').forEach(item => {
+
+            // Update active menu item
+            const menuItems = document.querySelectorAll('.menu-item');
+            menuItems.forEach(item => {
                 item.classList.remove('active');
             });
-            event.target.closest('.menu-item').classList.add('active');
+
+            const activeMenuItem = document.querySelector(`[href="#${sectionId}"]`);
+            if (activeMenuItem) {
+                activeMenuItem.classList.add('active');
+            }
         }
-        
+
+        function downloadCertificate(certificateId) {
+            // Simulate certificate download
+            const link = document.createElement('a');
+            link.href = `certificates/${certificateId}.pdf`;
+            link.download = `certificate-${certificateId}.pdf`;
+            link.click();
+            
+            // Show success message
+            showNotification('Certificate downloaded successfully!');
+        }
+
+        function viewCertificate(certificateId) {
+            // Simulate certificate view
+            window.open(`certificates/${certificateId}.pdf`, '_blank');
+        }
+
+        function showNotification(message) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: linear-gradient(135deg, #10b981, #059669);
+                color: white;
+                padding: 15px 20px;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                z-index: 1000;
+                font-weight: 600;
+                animation: slideIn 0.3s ease;
+            `;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            // Remove notification after 3 seconds
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
         // 메뉴 아이템 클릭 이벤트
         document.querySelectorAll('.menu-item').forEach(item => {
             item.addEventListener('click', function(e) {
