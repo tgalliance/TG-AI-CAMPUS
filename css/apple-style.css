@@ -445,8 +445,20 @@
 /* 추천 과정 카드 */
 .recommended-courses {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 18px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+@media (max-width: 1024px) {
+    .recommended-courses {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .recommended-courses {
+        grid-template-columns: 1fr;
+    }
 }
 
 .course-card-enhanced {
@@ -563,8 +575,20 @@
 /* 학습 목표 그리드 */
 .goals-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+@media (max-width: 1024px) {
+    .goals-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .goals-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .goal-card {
@@ -646,8 +670,20 @@
 /* 배지 그리드 */
 .badges-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+@media (max-width: 1024px) {
+    .badges-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .badges-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .badge-card {
@@ -716,13 +752,6 @@
 
 /* 반응형 */
 @media (max-width: 768px) {
-    .learning-summary,
-    .goals-grid,
-    .recommended-courses,
-    .badges-grid {
-        grid-template-columns: 1fr;
-    }
-    
     .activity-timeline .activity-item {
         flex-direction: column;
         gap: 12px;
