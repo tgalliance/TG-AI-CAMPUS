@@ -293,12 +293,12 @@
 .learning-summary .summary-card {
     color: white !important;
     border-radius: 14px;
-    padding: 18px 20px;
+    padding: 16px 18px;
     box-shadow: 0 4px 16px rgba(0,0,0,0.12);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
     overflow: hidden;
-    min-height: 160px;
+    min-height: 120px;
 }
 
 .learning-summary .summary-card::before {
@@ -318,23 +318,35 @@
     box-shadow: 0 12px 32px rgba(0,0,0,0.2);
 }
 
-.summary-card .summary-icon {
-    font-size: 1.5rem;
+/* 아이콘과 숫자를 가로로 배치 */
+.summary-card .summary-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
     margin-bottom: 10px;
-    opacity: 0.9;
+}
+
+.summary-card .summary-icon {
+    font-size: 2rem;
+    opacity: 0.95;
+    flex-shrink: 0;
+}
+
+.summary-card .summary-main {
+    flex: 1;
 }
 
 .summary-card .summary-value {
-    font-size: 2.2rem;
+    font-size: 2rem;
     font-weight: 700;
-    margin-bottom: 6px;
     line-height: 1;
+    margin-bottom: 4px;
 }
 
 .summary-card .summary-label {
     font-size: 0.88rem;
     opacity: 0.9;
-    margin-bottom: 12px;
+    line-height: 1.2;
 }
 
 .summary-card .summary-progress {
