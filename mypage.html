@@ -707,21 +707,17 @@
             <aside class="sidebar-menu">
                 <div class="menu-section">
                     <h3 class="section-title">설정</h3>
-                    <a href="#" class="menu-item active">
+                    <a href="#profile" class="menu-item active" onclick="showSection('profile'); return false;">
                         <i class="fas fa-user menu-icon"></i>
                         <span>프로필 설정</span>
                     </a>
-                    <a href="#" class="menu-item">
+                    <a href="#learning-env" class="menu-item" onclick="showSection('learning-env'); return false;">
                         <i class="fas fa-cog menu-icon"></i>
                         <span>학습 환경 설정</span>
                     </a>
-                    <a href="#" class="menu-item">
+                    <a href="#notifications" class="menu-item" onclick="showSection('notifications'); return false;">
                         <i class="fas fa-bell menu-icon"></i>
                         <span>알림 설정</span>
-                    </a>
-                    <a href="#" class="menu-item">
-                        <i class="fas fa-shield-alt menu-icon"></i>
-                        <span>보안 설정</span>
                     </a>
                 </div>
                 
@@ -731,16 +727,16 @@
                         <i class="fas fa-chart-line menu-icon"></i>
                         <span>학습 현황</span>
                     </a>
-                    <a href="courses.html" class="menu-item">
+                    <a href="curriculum.html" class="menu-item">
                         <i class="fas fa-book menu-icon"></i>
                         <span>교육 과정</span>
                     </a>
-                    <a href="#" class="menu-item">
+                    <a href="#badges" class="menu-item" onclick="showSection('badges'); return false;">
                         <i class="fas fa-trophy menu-icon"></i>
                         <span>성취 배지</span>
                         <span class="menu-badge">3</span>
                     </a>
-                    <a href="#" class="menu-item">
+                    <a href="#certificates" class="menu-item" onclick="showSection('certificates'); return false;">
                         <i class="fas fa-certificate menu-icon"></i>
                         <span>수료증</span>
                     </a>
@@ -748,206 +744,211 @@
                 
                 <div class="menu-section">
                     <h3 class="section-title">학습 도구</h3>
-                    <a href="#" class="menu-item">
+                    <a href="#schedule" class="menu-item" onclick="showSection('schedule'); return false;">
                         <i class="fas fa-calendar-alt menu-icon"></i>
                         <span>학습 일정</span>
                     </a>
-                    <a href="#" class="menu-item">
+                    <a href="#bookmarks" class="menu-item" onclick="showSection('bookmarks'); return false;">
                         <i class="fas fa-bookmark menu-icon"></i>
                         <span>북마크</span>
                         <span class="menu-badge">12</span>
                     </a>
-                    <a href="#" class="menu-item">
+                    <a href="#notes" class="menu-item" onclick="showSection('notes'); return false;">
                         <i class="fas fa-sticky-note menu-icon"></i>
                         <span>학습 노트</span>
                     </a>
-                    <a href="#" class="menu-item">
-                        <i class="fas fa-download menu-icon"></i>
-                        <span>다운로드</span>
-                    </a>
-                </div>
-                
-                <div class="menu-section">
-                    <h3 class="section-title">커뮤니티</h3>
-                    <a href="#" class="menu-item">
-                        <i class="fas fa-comments menu-icon"></i>
-                        <span>토론 방</span>
-                        <span class="menu-badge">5</span>
-                    </a>
-                    <a href="#" class="menu-item">
-                        <i class="fas fa-question-circle menu-icon"></i>
-                        <span>Q&A</span>
-                    </a>
-                    <a href="#" class="menu-item">
-                        <i class="fas fa-users menu-icon"></i>
-                        <span>스터디 그룹</span>
+                    <a href="recommended.html" class="menu-item">
+                        <i class="fas fa-video menu-icon"></i>
+                        <span>추천 영상</span>
                     </a>
                 </div>
             </aside>
 
             <!-- 메인 컨텐츠 영역 -->
+            <!-- 메인 컨텐츠 영역 -->
             <main class="main-content">
-                <!-- 학습 요약 -->
-                <div class="content-header">
-                    <h2 class="content-title">학습 요약</h2>
-                    <div class="content-actions">
-                        <a href="dashboard.html" class="btn-primary">
-                            <i class="fas fa-chart-line"></i>
-                            상세 보기
-                        </a>
+                <!-- 프로필 설정 섹션 (기본 표시) -->
+                <div id="profile" class="content-section" style="display: block;">
+                    <div class="content-header">
+                        <h2 class="content-title">프로필 설정</h2>
                     </div>
-                </div>
-                
-                <div class="learning-summary">
-                    <div class="summary-card">
-                        <div class="summary-icon">
-                            <i class="fas fa-book-open"></i>
+                    <div class="profile-settings">
+                        <div class="setting-group">
+                            <label>이름</label>
+                            <input type="text" value="김티지" class="form-input">
                         </div>
-                        <div class="summary-value">12</div>
-                        <div class="summary-label">수강 중인 과정</div>
-                    </div>
-                    
-                    <div class="summary-card">
-                        <div class="summary-icon">
-                            <i class="fas fa-clock"></i>
+                        <div class="setting-group">
+                            <label>이메일</label>
+                            <input type="email" value="1234@tg.com" class="form-input">
                         </div>
-                        <div class="summary-value">156</div>
-                        <div class="summary-label">총 학습 시간</div>
-                    </div>
-                    
-                    <div class="summary-card">
-                        <div class="summary-icon">
-                            <i class="fas fa-fire"></i>
+                        <div class="setting-group">
+                            <label>소속</label>
+                            <input type="text" value="TG Alliance" class="form-input">
                         </div>
-                        <div class="summary-value">7</div>
-                        <div class="summary-label">연속 학습 일수</div>
-                    </div>
-                    
-                    <div class="summary-card">
-                        <div class="summary-icon">
-                            <i class="fas fa-medal"></i>
-                        </div>
-                        <div class="summary-value">1,250</div>
-                        <div class="summary-label">획득 포인트</div>
+                        <button class="btn-primary">저장</button>
                     </div>
                 </div>
 
-                <!-- 최근 활동 -->
-                <div class="recent-activity">
+                <!-- 학습 환경 설정 섹션 -->
+                <div id="learning-env" class="content-section" style="display: none;">
                     <div class="content-header">
-                        <h2 class="content-title">최근 활동</h2>
-                        <div class="content-actions">
-                            <a href="#" class="btn-secondary">모두 보기</a>
-                        </div>
+                        <h2 class="content-title">학습 환경 설정</h2>
                     </div>
-                    
-                    <div class="activity-list">
-                        <div class="activity-item">
-                            <div class="activity-icon">
-                                <i class="fas fa-play"></i>
+                    <div class="settings-list">
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>학습 알림</h4>
+                                <p>새로운 강의 및 업데이트 알림 받기</p>
                             </div>
-                            <div class="activity-content">
-                                <div class="activity-title">프롬프트 엔지니어링 수강</div>
-                                <div class="activity-description">2장: 고급 프롬프트 기법 학습 완료</div>
-                                <div class="activity-time">2시간 전</div>
-                            </div>
-                        </div>
-                        
-                        <div class="activity-item">
-                            <div class="activity-icon">
-                                <i class="fas fa-trophy"></i>
-                            </div>
-                            <div class="activity-content">
-                                <div class="activity-title">배지 획득</div>
-                                <div class="activity-description">성장하는 학습자 배지 획득</div>
-                                <div class="activity-time">1일 전</div>
-                            </div>
-                        </div>
-                        
-                        <div class="activity-item">
-                            <div class="activity-icon">
-                                <i class="fas fa-comment"></i>
-                            </div>
-                            <div class="activity-content">
-                                <div class="activity-title">토론 참여</div>
-                                <div class="activity-description">AI 활용 팁 공유 토론에 의견 작성</div>
-                                <div class="activity-time">2일 전</div>
-                            </div>
-                        </div>
-                        
-                        <div class="activity-item">
-                            <div class="activity-icon">
-                                <i class="fas fa-bookmark"></i>
-                            </div>
-                            <div class="activity-content">
-                                <div class="activity-title">북마크 추가</div>
-                                <div class="activity-description">AI 데이터 분석 강의 자료 북마크</div>
-                                <div class="activity-time">3일 전</div>
-                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
                         </div>
                     </div>
                 </div>
 
-                <!-- 추천 과정 -->
-                <div class="recommended-section">
+                <!-- 알림 설정 섹션 -->
+                <div id="notifications" class="content-section" style="display: none;">
                     <div class="content-header">
-                        <h2 class="content-title">맞춤 추천 과정</h2>
-                        <div class="content-actions">
-                            <a href="courses.html" class="btn-primary">
-                                <i class="fas fa-plus"></i>
-                                더보기
-                            </a>
+                        <h2 class="content-title">알림 설정</h2>
+                    </div>
+                    <div class="settings-list">
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>이메일 알림</h4>
+                                <p>중요 공지사항 이메일로 받기</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
                         </div>
                     </div>
-                    
-                    <div class="recommended-courses">
-                        <div class="course-card">
-                            <div class="course-thumbnail">
-                                <img src="https://picsum.photos/seed/course1/300/150.jpg" alt="과정">
-                                <span class="course-level">중급</span>
+                </div>
+
+                <!-- 성취 배지 섹션 -->
+                <div id="badges" class="content-section" style="display: none;">
+                    <div class="content-header">
+                        <h2 class="content-title">성취 배지</h2>
+                    </div>
+                    <div class="badges-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px;">
+                        <div class="badge-card" style="background: white; padding: 30px; border-radius: 12px; text-align: center;">
+                            <div style="font-size: 3rem;">🏆</div>
+                            <h4>첫 강의 완료</h4>
+                            <p>2026.01.15</p>
+                        </div>
+                        <div class="badge-card" style="background: white; padding: 30px; border-radius: 12px; text-align: center;">
+                            <div style="font-size: 3rem;">📚</div>
+                            <h4>열정적인 학습자</h4>
+                            <p>2026.02.10</p>
+                        </div>
+                        <div class="badge-card" style="background: white; padding: 30px; border-radius: 12px; text-align: center;">
+                            <div style="font-size: 3rem;">⭐</div>
+                            <h4>성장하는 AI 전문가</h4>
+                            <p>2026.03.05</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 수료증 섹션 -->
+                <div id="certificates" class="content-section" style="display: none;">
+                    <div class="content-header">
+                        <h2 class="content-title">수료증</h2>
+                    </div>
+                    <div class="certificates-list">
+                        <div class="certificate-item" style="background: white; padding: 20px; border-radius: 12px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <h4>AI 기초 과정</h4>
+                                <p>발급일: 2026.02.15</p>
+                                <span>인증번호: TGA-2026-001234</span>
                             </div>
-                            <div class="course-info">
-                                <h3 class="course-title">AI 데이터 분석</h3>
-                                <p class="course-description">AI를 활용한 데이터 분석 기법 마스터</p>
-                                <div class="course-meta">
-                                    <span><i class="fas fa-clock"></i> 3시간</span>
-                                    <span><i class="fas fa-star"></i> 4.8</span>
-                                </div>
+                            <button class="btn-primary"><i class="fas fa-download"></i> 다운로드</button>
+                        </div>
+                        <div class="certificate-item" style="background: white; padding: 20px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <h4>프롬프트 엔지니어링</h4>
+                                <p>발급일: 2026.03.20</p>
+                                <span>인증번호: TGA-2026-001567</span>
+                            </div>
+                            <button class="btn-primary"><i class="fas fa-download"></i> 다운로드</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 학습 일정 섹션 -->
+                <div id="schedule" class="content-section" style="display: none;">
+                    <div class="content-header">
+                        <h2 class="content-title">학습 일정</h2>
+                        <button class="btn-primary"><i class="fas fa-plus"></i> 일정 추가</button>
+                    </div>
+                    <div class="schedule-list">
+                        <div class="schedule-item" style="background: white; padding: 20px; border-radius: 12px; margin-bottom: 15px; display: flex; gap: 20px;">
+                            <div style="background: #667eea; color: white; padding: 10px 20px; border-radius: 8px; text-align: center;">
+                                <div style="font-size: 2rem; font-weight: bold;">15</div>
+                                <div>4월</div>
+                            </div>
+                            <div>
+                                <h4>AI 활용 매뉴얼 완독</h4>
+                                <p><i class="fas fa-clock"></i> 10:00 ~ 12:00</p>
                             </div>
                         </div>
-                        
-                        <div class="course-card">
-                            <div class="course-thumbnail">
-                                <img src="https://picsum.photos/seed/course2/300/150.jpg" alt="과정">
-                                <span class="course-level">고급</span>
-                            </div>
-                            <div class="course-info">
-                                <h3 class="course-title">AI 전략 수립</h3>
-                                <p class="course-description">비즈니스 관점에서 AI 전략 수립</p>
-                                <div class="course-meta">
-                                    <span><i class="fas fa-clock"></i> 5시간</span>
-                                    <span><i class="fas fa-star"></i> 4.9</span>
-                                </div>
+                    </div>
+                </div>
+
+                <!-- 북마크 섹션 -->
+                <div id="bookmarks" class="content-section" style="display: none;">
+                    <div class="content-header">
+                        <h2 class="content-title">북마크</h2>
+                        <p>저장한 강의와 자료 (12개)</p>
+                    </div>
+                    <div class="bookmarks-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;">
+                        <div class="bookmark-card" style="background: white; border-radius: 12px; overflow: hidden;">
+                            <img src="https://img.youtube.com/vi/bOII_roWlys/sddefault.jpg" alt="강의" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div style="padding: 15px;">
+                                <h4>프롬프트 엔지니어링 기초</h4>
+                                <p>AI 활용 매뉴얼</p>
+                                <span style="font-size: 0.9rem; color: #999;">저장: 2026.03.10</span>
                             </div>
                         </div>
-                        
-                        <div class="course-card">
-                            <div class="course-thumbnail">
-                                <img src="https://picsum.photos/seed/course3/300/150.jpg" alt="과정">
-                                <span class="course-level">초급</span>
+                        <div class="bookmark-card" style="background: white; border-radius: 12px; overflow: hidden;">
+                            <img src="https://img.youtube.com/vi/KgKDiuskLug/sddefault.jpg" alt="강의" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div style="padding: 15px;">
+                                <h4>고급 프롬프트 기법</h4>
+                                <p>AI 활용 매뉴얼</p>
+                                <span style="font-size: 0.9rem; color: #999;">저장: 2026.03.15</span>
                             </div>
-                            <div class="course-info">
-                                <h3 class="course-title">AI 윤리와 법규</h3>
-                                <p class="course-description">AI 활용 시 윤리적 고려사항 학습</p>
-                                <div class="course-meta">
-                                    <span><i class="fas fa-clock"></i> 2시간</span>
-                                    <span><i class="fas fa-star"></i> 4.7</span>
-                                </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 학습 노트 섹션 -->
+                <div id="notes" class="content-section" style="display: none;">
+                    <div class="content-header">
+                        <h2 class="content-title">학습 노트</h2>
+                        <button class="btn-primary"><i class="fas fa-plus"></i> 노트 추가</button>
+                    </div>
+                    <div class="notes-list">
+                        <div class="note-item" style="background: white; padding: 20px; border-radius: 12px; margin-bottom: 15px;">
+                            <h4>프롬프트 작성 팁 정리</h4>
+                            <p>효과적인 프롬프트 작성을 위한 핵심 요소들...</p>
+                            <div style="margin-top: 10px; color: #999; font-size: 0.9rem;">
+                                <span><i class="fas fa-calendar"></i> 2026.03.20</span>
+                                <span style="margin-left: 15px;"><i class="fas fa-tag"></i> 프롬프트</span>
+                            </div>
+                        </div>
+                        <div class="note-item" style="background: white; padding: 20px; border-radius: 12px;">
+                            <h4>AI 윤리 중요 포인트</h4>
+                            <p>AI 활용 시 고려해야 할 윤리적 측면들...</p>
+                            <div style="margin-top: 10px; color: #999; font-size: 0.9rem;">
+                                <span><i class="fas fa-calendar"></i> 2026.03.18</span>
+                                <span style="margin-left: 15px;"><i class="fas fa-tag"></i> AI 윤리</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </main>
+
         </div>
     </div>
 
@@ -1015,9 +1016,35 @@
 
     <script src="js/main.js"></script>
     <script>
+        // 섹션 전환 함수
+        function showSection(sectionId) {
+            // 모든 섹션 숨기기
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            // 선택된 섹션 보이기
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.style.display = 'block';
+            }
+            
+            // 메뉴 활성화 상태 업데이트
+            document.querySelectorAll('.menu-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            event.target.closest('.menu-item').classList.add('active');
+        }
+        
         // 메뉴 아이템 클릭 이벤트
         document.querySelectorAll('.menu-item').forEach(item => {
             item.addEventListener('click', function(e) {
+                // href가 외부 링크인 경우 그대로 진행
+                const href = this.getAttribute('href');
+                if (href && !href.startsWith('#')) {
+                    return true;
+                }
+                
                 // 현재 활성화된 메뉴 제거
                 document.querySelectorAll('.menu-item').forEach(i => i.classList.remove('active'));
                 // 클릭된 메뉴 활성화
@@ -1036,7 +1063,10 @@
                 if (file) {
                     const reader = new FileReader();
                     reader.onload = function(e) {
-                        document.querySelector('.profile-avatar img').src = e.target.result;
+                        const img = document.querySelector('.profile-avatar img');
+                        if (img) {
+                            img.src = e.target.result;
+                        }
                     };
                     reader.readAsDataURL(file);
                 }
